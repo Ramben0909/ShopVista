@@ -1,2 +1,2 @@
 # ShopVista
-This is a ecommerce website for our ipm college project 
+This is an E-Commerce website for our ipm college project 
