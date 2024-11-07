@@ -108,7 +108,8 @@ export const forgotPasswordController =async(req,res) =>{
       return res.status(400).send({message:'Answer is required'})
     }
     if(!newPassword){
-      return res.status(400).send({message:'New Password is required'})
+      return 
+      res.status(400).send({message:'New Password is required'})
     }
     //check
     const user = await userModel.findOne({email,answer})
