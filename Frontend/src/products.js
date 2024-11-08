@@ -16,7 +16,7 @@
         "10% off on first purchase",
         "Free shipping on orders over $50"
       ],
-      "image": "https://example.com/images/wireless-headphones.jpg"
+      "image": "https://drive.google.com/file/d/1qxfq5roT64pHZYDFJEYhTJFhYclBhUDc/view?usp=drive_link"
     },
     {
       "product_id": "P002",
@@ -35,7 +35,7 @@
         "15% off for students",
         "Free wireless earbuds with every purchase"
       ],
-      "image": "https://example.com/images/smartphone-12-pro.jpg"
+      "image": "https://drive.google.com/file/d/1eAPCaZz0vIMKpxuJksezqasWu-BqaT8r/view?usp=drive_link"
     },
     {
       "product_id": "P003",
@@ -54,7 +54,7 @@
         "20% off on accessories with purchase",
         "1-year warranty included"
       ],
-      "image": "https://example.com/images/gaming-laptop.jpg"
+      "image": "https://drive.google.com/file/d/1jixHhlwfRy2nHXHBtFaFO2TAi5T3zwEz/view?usp=drive_link"
     },
     {
       "product_id": "P004",
@@ -73,7 +73,7 @@
         "Free installation included",
         "10% off for old customers"
       ],
-      "image": "https://example.com/images/smart-tv.jpg"
+      "image": "https://drive.google.com/file/d/1WbiQj2kB1FuXPSmt4rsrOBY6-_ipuPbv/view?usp=drive_link"
     },
     {
       "product_id": "P005",
@@ -92,7 +92,7 @@
         "5% off for returning customers",
         "Free shipping on orders over $30"
       ],
-      "image": "https://example.com/images/bluetooth-speaker.jpg"
+      "image": "https://drive.google.com/file/d/1kHdX49i3SuI7ELp07d4Pkjv8e1oFQ6N6/view?usp=drive_link"
     },
     {
       "product_id": "P006",
@@ -111,7 +111,7 @@
         "10% off on first order",
         "Free band with every purchase"
       ],
-      "image": "https://example.com/images/smartwatch.jpg"
+      "image": "https://drive.google.com/file/d/1rfn8NYIagNpB-9MAZSA16GbPugKgkf7w/view?usp=drive_link"
     },
     {
       "product_id": "P007",
@@ -130,7 +130,7 @@
         "10% off for new customers",
         "Buy 1 Get 1 Free on selected models"
       ],
-      "image": "https://example.com/images/electric-toothbrush.jpg"
+      "image": "https://drive.google.com/file/d/1TB5cE2A3twl7IrJzaUxag-NN5JdEN0Pj/view?usp=drive_link"
     },
     {
       "product_id": "P008",
@@ -149,7 +149,7 @@
         "10% off on your first order",
         "Free shipping on orders over $40"
       ],
-      "image": "https://example.com/images/laptop-backpack.jpg"
+      "image": "https://drive.google.com/file/d/1c228I8Kj9foslbjvqMXfE_541tAOOl0P/view?usp=drive_link"
     },
     {
       "product_id": "P009",
@@ -167,7 +167,7 @@
         "15% off for first-time buyers",
         "Free app subscription for 1 month"
       ],
-      "image": "https://example.com/images/fitness-tracker.jpg"
+      "image": "https://drive.google.com/file/d/1rZwc4XJd_TkfM8g8X3wOVF8kYIiL9Gr2/view?usp=drive_link"
     },
     {
       "product_id": "P010",
@@ -186,7 +186,7 @@
         "15% off on your first purchase",
         "Free recipe book with every order"
       ],
-      "image": "https://example.com/images/air-fryer.jpg"
+      "image": "https://drive.google.com/file/d/1KGf8zJORy1F3rGIUwr61ub5WXhD_ADsA/view?usp=drive_link"
     }
   ]
   
