@@ -1,16 +1,44 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
+// src/components/layout/header.jsx
+import { Link} from 'react-router-dom';
+import { useAuth } from "../../pages/context/useAuth";
 
 const Header = () => {
+  const { isAuthenticated, isRegistered, login, logout } = useAuth();
+
   return (
     <header style={styles.header}>
       <nav style={styles.nav}>
         <ul style={styles.navList}>
-          <li style={styles.navItem}><Link to="/" style={styles.link}>Home</Link></li>
-          <li style={styles.navItem}><Link to="/contact" style={styles.link}>Contact</Link></li>
-          <li style={styles.navItem}><Link to="/policy" style={styles.link}>Policy</Link></li>
-          <li style={styles.navItem}><Link to="/about" style={styles.link}>About</Link></li>
+          {isAuthenticated ? (
+            <>
+              <li style={styles.navItem}><Link to="/" style={styles.link}>Home</Link></li>
+              <li style={styles.navItem}><Link to="/contact" style={styles.link}>Contact</Link></li>
+              <li style={styles.navItem}><Link to="/policy" style={styles.link}>Policy</Link></li>
+              <li style={styles.navItem}><Link to="/about" style={styles.link}>About</Link></li>
+              <li style={styles.navItem}>
+                <span 
+                  onClick={logout} 
+                  style={{ ...styles.link, cursor: 'pointer' }}
+                >
+                  Logout
+                </span>
+              </li>
+            </>
+          ) : (
+            <li style={styles.navItem}>
+              {isRegistered ? (
+                <Link 
+                  to="/login" 
+                  onClick={login} 
+                  style={styles.link}
+                >
+                  {isAuthenticated ? 'Logged In' : 'Log In'}
+                </Link>
+              ) : (
+                <Link to="/register" style={styles.link}>Register</Link>
+              )}
+            </li>
+          )}
         </ul>
       </nav>
     </header>

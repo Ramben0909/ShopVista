@@ -1,5 +1,4 @@
-import React from 'react';
-
+ 
 function Footer() {
   return (
     <div className="p-4" style={{ background: 'linear-gradient(to right, #a64d79, #4ca1af)' }}>
