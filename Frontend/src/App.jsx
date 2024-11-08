@@ -9,6 +9,9 @@ import PageNotFound from './pages/PageNotFound.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Auth/register.jsx';
 import 'react-toastify/dist/ReactToastify.css';
+import DummyProfile from './pages/dummyProfile.jsx';
+
+
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dummyprofile" element={<DummyProfile />} /> {/* Add DummyProfile route */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </AuthProvider>

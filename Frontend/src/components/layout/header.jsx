@@ -15,6 +15,12 @@ const Header = () => {
               <li style={styles.navItem}><Link to="/contact" style={styles.link}>Contact</Link></li>
               <li style={styles.navItem}><Link to="/policy" style={styles.link}>Policy</Link></li>
               <li style={styles.navItem}><Link to="/about" style={styles.link}>About</Link></li>
+              {/* Added Dummy Profile link - Changes */}
+              <li style={styles.navItem}>
+                <Link to="/dummyprofile" style={styles.link}>Dummy Profile</Link>
+              </li>
+
+
               <li style={styles.navItem}>
                 <span 
                   onClick={logout} 
