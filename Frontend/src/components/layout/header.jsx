@@ -9,9 +9,9 @@ const Header = () => {
     <header style={styles.header}>
       <nav style={styles.nav}>
         <ul style={styles.navList}>
+             <li style={styles.navItem}><Link to="/" style={styles.link}>Home</Link></li>
           {isAuthenticated ? (
             <>
-              <li style={styles.navItem}><Link to="/" style={styles.link}>Home</Link></li>
               <li style={styles.navItem}><Link to="/contact" style={styles.link}>Contact</Link></li>
               <li style={styles.navItem}><Link to="/policy" style={styles.link}>Policy</Link></li>
               <li style={styles.navItem}><Link to="/about" style={styles.link}>About</Link></li>
