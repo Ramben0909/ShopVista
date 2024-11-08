@@ -1,6 +1,6 @@
 // src/components/layout/header.jsx
 import { Link} from 'react-router-dom';
-import { useAuth } from "../../pages/context/authcontext.jsx";
+import { useAuth } from "../../pages/context/useAuth";
 
 const Header = () => {
   const { isAuthenticated, isRegistered, login, logout } = useAuth();

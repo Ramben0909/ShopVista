@@ -1,5 +1,5 @@
 // src/pages/context/authcontext.jsx
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState} from 'react';
 
 const AuthContext = createContext();
 
@@ -29,11 +29,6 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
-
-// Custom hook to access AuthContext
-export const useAuth = () => {
-  return useContext(AuthContext);
 };
 
 export default AuthContext;
