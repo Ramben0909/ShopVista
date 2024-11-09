@@ -9,6 +9,9 @@ import PageNotFound from './pages/PageNotFound.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Auth/register.jsx';
 import 'react-toastify/dist/ReactToastify.css';
+import DummyProfile from './pages/dummyProfile.jsx';
+
+
 import MyCart from './pages/MyCart.jsx';
 import ProductDetails from './pages/ProductDetails.jsx'
 
@@ -24,6 +27,7 @@ function App() {
         <Route path="/mycart" element={<MyCart />} />
         <Route path="/productdetails/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dummyprofile" element={<DummyProfile />} /> {/* Add DummyProfile route */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </AuthProvider>
