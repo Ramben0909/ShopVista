@@ -1,5 +1,3 @@
-// Register.jsx
-
 import { useState } from 'react';
 import Layout from '../../components/layout/layout.jsx';
 import axios from 'axios';
@@ -80,7 +78,7 @@ const Register = () => {
         <h2 className="text-center mb-4">Register</h2>
         {error && <div className="alert alert-danger">{error}</div>}
         {success && <div className="alert alert-success">{success}</div>}
-        <form onSubmit={handleSubmit} className="col-md-6 mx-auto">
+        <form onSubmit={handleSubmit} className="col-md-4 mx-auto">
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>
             <input
@@ -150,6 +148,10 @@ const Register = () => {
             {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
+
+        <div className="mt-3 text-center">
+          <p>Already have an account? <button className="btn btn-link" onClick={() => navigate('/login')}>Login</button></p>
+        </div>
       </div>
     </Layout>
   );

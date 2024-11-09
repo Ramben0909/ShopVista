@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { useAuth } from '../pages/context/useAuth.jsx'; // Import the useAuth hook
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../pages/context/useAuth.jsx';
 import Layout from '../components/layout/layout.jsx';
 import SearchBar from './SearchBar.jsx';
 
@@ -12,23 +12,32 @@ const Home = () => {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [minRating, setMinRating] = useState(0);
-  const [sellerName, setSellerName] = useState('');  // Added seller name state
+  const [sellerName, setSellerName] = useState('');
   const [showOffersOnly, setShowOffersOnly] = useState(false);
-  const { addToCart } = useAuth(); // Access addToCart function from context
-  const navigate = useNavigate(); // Initialize navigate
+  const { addToCart } = useAuth();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/v1/products');
+        const response = await fetch('http://localhost:5000/api/v1/products', {
+          headers: {
+            'Cache-Control': 'no-cache',
+          },
+        });
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
         setProducts(data);
         setFilteredProducts(data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching products:', error);
+        setError(error.message);
+        setLoading(false);
       }
     };
 
@@ -77,7 +86,7 @@ const Home = () => {
 
     // Filter by offers presence
     if (showOffersOnly) {
-      filtered = filtered.filter(product => product.offers.length > 0);
+      filtered = filtered.filter((product) => product.has_offer);
     }
 
     setFilteredProducts(filtered);
@@ -91,14 +100,42 @@ const Home = () => {
       setMaxPrice(value[1]);
     } else if (type === 'rating') {
       setMinRating(value);
+    } else if (type === 'seller') {
+      setSellerName(value);
+    } else if (type === 'offers') {
+      setShowOffersOnly(value);
     }
   };
 
+  if (loading) {
+    return (
+      <Layout title="Home">
+        <div>Loading products...</div>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout title="Home">
+        <div>Error fetching products: {error}</div>
+      </Layout>
+    );
+  }
+
   return (
-    <Layout title={'Home'}>
+    <Layout title="Home">
       <div style={{ padding: '20px' }}>
-        {/* Search Bar and Category Filter */}
-        <SearchBar onSearch={handleSearch} onFilterChange={handleFilterChange} />
+        <SearchBar
+          onSearch={handleSearch}
+          onFilterChange={handleFilterChange}
+          selectedCategory={selectedCategory}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          minRating={minRating}
+          sellerName={sellerName}
+          showOffersOnly={showOffersOnly}
+        />
         <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '24px' }}>Product Listings</h1>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
           {filteredProducts.length > 0 ? (
@@ -114,25 +151,24 @@ const Home = () => {
                   justifyContent: 'space-between',
                   width: '100%',
                   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                  maxWidth: '600px',
+                  maxWidth: '1200px',
                   margin: '0 auto',
                 }}
               >
-                <div style={{ flex: '1' }}>
-                  <h3 style={{ fontSize: '1.2rem', margin: '8px 0' }}>{product.product_name}</h3>
-                  <p style={{ fontSize: '0.9rem', color: '#555' }}>Rating: {product.rating} ⭐</p>
-                  <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#333' }}>${product.price}</p>
+                <div style={{ flex: '1', marginRight: '16px' }}>
+                  <h3 style={{ fontSize: '1.4rem', margin: '8px 0' }}>{product.product_name}</h3>
+                  <p style={{ fontSize: '1rem', color: '#555' }}>Rating: {product.rating} ⭐</p>
+                  <p style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#333' }}>${product.price}</p>
                   <button
-                    onClick={() => addToCart(product)} // Add product to cart
+                    onClick={() => addToCart(product)}
                     style={{
                       backgroundColor: '#28a745',
                       color: '#fff',
                       border: 'none',
-                      padding: '8px 12px',
+                      padding: '10px 14px',
                       borderRadius: '4px',
                       cursor: 'pointer',
                       marginTop: '8px',
-                      marginRight: '8px'
                     }}
                   >
                     Add to Cart
@@ -142,20 +178,24 @@ const Home = () => {
                       backgroundColor: '#007bff',
                       color: '#fff',
                       border: 'none',
-                      padding: '8px 12px',
+                      padding: '10px 14px',
                       borderRadius: '4px',
                       cursor: 'pointer',
-                      marginTop: '8px'
+                      marginTop: '8px',
                     }}
-                    onClick={() => navigate(`/productdetails/${product.product_id}`)} // Navigate to product details
+                    onClick={() => navigate(`/productdetails/${product.product_id}`)}
                   >
                     Show More
                   </button>
                 </div>
                 <img
-                  src={product.image}
+                  src={`http://localhost:5000${product.image}`}
                   alt={product.product_name}
-                  style={{ width: '150px', height: 'auto', borderRadius: '4px', marginLeft: '16px' }}
+                  style={{
+                    width: '300px',
+                    height: 'auto',
+                    borderRadius: '4px',
+                  }}
                 />
               </div>
             ))

@@ -38,16 +38,22 @@ const MyCart = () => {
                     padding: '8px 12px',
                     borderRadius: '4px',
                     cursor: 'pointer',
-                    marginTop: '8px'
+                    marginTop: '8px',
                   }}
                 >
                   Remove
                 </button>
               </div>
+              {/* Ensure the image path is correct */}
               <img
-                src={item.image}
+                src={`http://localhost:5000${item.image}`} // Prepend the base URL for the image
                 alt={item.product_name}
-                style={{ width: '150px', height: 'auto', borderRadius: '4px', marginLeft: '16px' }}
+                style={{
+                  width: '150px',
+                  height: 'auto',
+                  borderRadius: '4px',
+                  marginLeft: '16px',
+                }}
               />
             </div>
           ))}

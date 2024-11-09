@@ -45,57 +45,56 @@ export const registerController = async (req, res) => {
   }
 };
 
-export const loginController =async(req,res)=>{
-   try {
-    const {email,password}=req.body;
-    if(!email || !password){
-      return res.status(404).send({
-        success:"False",
-        message:"Email or password invalid",
+export const loginController = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-      });
-    }
-     
-    const exist = await  userModel.findOne({email});
-    if(!exist){
-      return res.status(404).send({
-        success:"failed",
-        message:"Email not found"
-      })
-    }
-
-    const match = await comparePassword(password,exist.password);
-
-    if(!match){
-      return res.status(200).send({
-        success:"failed",
-        message:"Password doesnt match"
+    if (!email || !password) {
+      return res.status(400).send({
+        success: false,
+        message: "Email and password are required.",
       });
     }
 
-    const token = await JWT.sign({_id:exist._id},process.env.JWT_SECRET,{expiresIn:"7d"});
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "Email not found.",
+      });
+    }
+
+    const isMatch = await comparePassword(password, user.password);
+    if (!isMatch) {
+      return res.status(400).send({
+        success: false,
+        message: "Incorrect password.",
+      });
+    }
+
+    const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
     res.status(200).send({
-      success:"Successful",
-      message:"Loged in",
-      user:{
-        name:exist.name,
-        email:exist.email,
-        address:exist.address,
-        phone:exist.phone,
+      success: true,
+      message: "Logged in successfully.",
+      user: {
+        name: user.name,
+        email: user.email,
+        address: user.address,
+        phone: user.phone,
       },
-      token
+      token,
     });
+  } catch (error) {
+    console.error("Login error: ", error);
+    res.status(500).send({
+      success: false,
+      message: "An error occurred during login.",
+      error: error.message || error,
+    });
+  }
+};
 
-   }catch(error){
-    console.log(error);
-    res.status(400).send({
-      success:"false",
-      message:"Log in failed",
-      error
-      });
-   }
-}
 
 //forgotPasswordController
 export const forgotPasswordController =async(req,res) =>{

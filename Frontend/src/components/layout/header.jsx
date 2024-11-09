@@ -1,81 +1,33 @@
-// src/components/layout/header.jsx
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from "../../pages/context/useAuth";
-import { useState } from 'react';
 
 const Header = () => {
   const { isAuthenticated, isRegistered, login, logout } = useAuth();
-  
+  const navigate = useNavigate();
+
+  // Conditional redirect: Only redirect to home page if not already on it
+  useEffect(() => {
+    if (isAuthenticated && window.location.pathname !== "/dummyprofile") {
+      navigate('/'); // Redirect to home page
+    }
+  }, [isAuthenticated, navigate]);
+
   // State to manage hover effects
-  const [isRegisterHovered, setIsRegisterHovered] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
 
   return (
     <header style={styles.header}>
       <nav style={styles.nav}>
         <ul style={styles.navList}>
-          {/* Links for authenticated users */}
-          {isAuthenticated ? (
-            <>
-              <li style={styles.navItem}>
-                <Link 
-                  to="/policy" 
-                  style={{ ...styles.link, color: hoveredLink === 'policy' ? 'blue' : '#fff' }} 
-                  onMouseEnter={() => setHoveredLink('policy')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  Policy
-                </Link>
-              </li>
-              <li style={styles.navItem}>
-                <Link 
-                  to="/about" 
-                  style={{ ...styles.link, color: hoveredLink === 'about' ? 'blue' : '#fff' }} 
-                  onMouseEnter={() => setHoveredLink('about')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  About
-                </Link>
-              </li>
-              <li style={styles.navItem}>
-                <Link 
-                  to="/dummyprofile" 
-                  style={{ ...styles.link, color: hoveredLink === 'dummyprofile' ? 'blue' : '#fff' }} 
-                  onMouseEnter={() => setHoveredLink('dummyprofile')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  Dummy Profile
-                </Link>
-              </li>
-              <li style={styles.navItem}>
-                <span 
-                  onClick={logout} 
-                  style={{ ...styles.link, cursor: 'pointer', color: '#fff' }}
-                >
-                  Logout
-                </span>
-              </li>
-            </>
-          ) : (
-            <li style={styles.navItem}>
-              {isRegistered ? (
-                <Link 
-                  to="/login" 
-                  onClick={login} 
-                  style={{ ...styles.link, color: hoveredLink === 'login' ? 'blue' : '#EDB8C7' }} 
-                  onMouseEnter={() => setHoveredLink('login')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  {isAuthenticated ? 'Logged In' : 'Log In'}
-                </Link>
-              ) : null}
-            </li>
-          )}
-          {/* Links for all users */}
+          {/* Common Links */}
           <li style={styles.navItem}>
             <Link 
               to="/" 
-              style={{ ...styles.link, color: hoveredLink === 'home' ? 'blue' : '#EDB8C7' }} 
+              style={{ 
+                ...styles.link, 
+                color: hoveredLink === 'home' ? 'blue' : '#EDB8C7' 
+              }} 
               onMouseEnter={() => setHoveredLink('home')}
               onMouseLeave={() => setHoveredLink(null)}
             >
@@ -85,7 +37,10 @@ const Header = () => {
           <li style={styles.navItem}>
             <Link 
               to="/mycart" 
-              style={{ ...styles.link, color: hoveredLink === 'mycart' ? 'blue' : '#EDB8C7' }} 
+              style={{ 
+                ...styles.link, 
+                color: hoveredLink === 'mycart' ? 'blue' : '#EDB8C7' 
+              }} 
               onMouseEnter={() => setHoveredLink('mycart')}
               onMouseLeave={() => setHoveredLink(null)}
             >
@@ -95,7 +50,10 @@ const Header = () => {
           <li style={styles.navItem}>
             <Link 
               to="/about" 
-              style={{ ...styles.link, color: hoveredLink === 'about' ? 'blue' : '#EDB8C7' }} 
+              style={{ 
+                ...styles.link, 
+                color: hoveredLink === 'about' ? 'blue' : '#EDB8C7' 
+              }} 
               onMouseEnter={() => setHoveredLink('about')}
               onMouseLeave={() => setHoveredLink(null)}
             >
@@ -105,30 +63,65 @@ const Header = () => {
           <li style={styles.navItem}>
             <Link 
               to="/contact" 
-              style={{ ...styles.link, color: hoveredLink === 'contact' ? 'blue' : '#EDB8C7' }} 
+              style={{ 
+                ...styles.link, 
+                color: hoveredLink === 'contact' ? 'blue' : '#EDB8C7' 
+              }} 
               onMouseEnter={() => setHoveredLink('contact')}
               onMouseLeave={() => setHoveredLink(null)}
             >
               Contact
             </Link>
           </li>
+
+          {/* Conditional Links for Authenticated User */}
+          {isAuthenticated ? (
+            <>
+              <li style={styles.navItem}>
+                <Link 
+                  to="/dummyprofile" 
+                  style={{ 
+                    ...styles.link, 
+                    color: hoveredLink === 'dummyprofile' ? 'blue' : '#fff' 
+                  }} 
+                  onMouseEnter={() => setHoveredLink('dummyprofile')}
+                  onMouseLeave={() => setHoveredLink(null)}
+                >
+                  Dummy Profile
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              {/* Register/Login Link */}
+              {isRegistered ? (
+                <li style={styles.navItem}>
+                  <Link 
+                    to="/login" 
+                    onClick={login} 
+                    style={{ 
+                      ...styles.link, 
+                      color: hoveredLink === 'login' ? 'blue' : '#EDB8C7' 
+                    }} 
+                    onMouseEnter={() => setHoveredLink('login')}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {isAuthenticated ? 'Logged In' : 'Log In'}
+                  </Link>
+                </li>
+              ) : (
+                <li style={styles.navItem}>
+                  <Link 
+                    to="/register" 
+                    style={styles.link}
+                  >
+                    Register/Login
+                  </Link>
+                </li>
+              )}
+            </>
+          )}
         </ul>
-        {/* Register button on the right */}
-        <span 
-          style={styles.registerButton}
-          onMouseEnter={() => setIsRegisterHovered(true)}
-          onMouseLeave={() => setIsRegisterHovered(false)}
-        >
-          <Link 
- to="/register" 
-            style={{ 
-              ...styles.registerLink, 
-              backgroundColor: isRegisterHovered ? 'green' : '#007bff' // Change background color on hover
-            }}
-          >
-            Register
-          </Link>
-        </span>
       </nav>
     </header>
   );

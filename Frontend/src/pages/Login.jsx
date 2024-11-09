@@ -1,10 +1,9 @@
-// Login.jsx
 import { useState } from 'react';
 import Layout from '../components/layout/layout';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../pages/context/useAuth.jsx';
+import { useAuth } from '../pages/context/useAuth';
 import './Login.css'; // Importing the CSS file
 
 const Login = () => {
@@ -12,27 +11,39 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth(); // Using the login function from context
 
+  // Handle the form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    // Basic validation for email and password
+    if (!email || !password) {
+      toast.error('Please fill in both fields.');
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await axios.post(`${import.meta.env.VITE_API}/api/v1/auth/login`, { email, password });
-      console.log(response);
-      
-      if (response.data.success === "Successful") {
-        localStorage.setItem('token', response.data.token);
+
+      if (response.data.success === true) {
+        // Pass the token and user data to context
+        const { token, user } = response.data; // Assuming the response contains token and user data
+        login(token, user); // Calling login function from context to store token and user data
+
+        console.log(user);  // Log user data for confirmation
         toast.success(response.data.message);
-        login();
+        
+        // Navigate to home or dashboard after successful login
         navigate('/'); 
       } else {
         toast.error(response.data.message);
-      }
+      }      
     } catch (error) {
       toast.error('Login failed. Please try again!');
-      console.log(error);
+      console.error('Login error:', error);
     } finally {
       setLoading(false);
     }
@@ -49,7 +60,7 @@ const Login = () => {
             <input
               type="email"
               className="form-control"
-              id=" email"
+              id="email"
               placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

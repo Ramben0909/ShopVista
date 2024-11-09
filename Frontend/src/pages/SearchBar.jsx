@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// eslint-disable-next-line react/prop-types
 const SearchBar = ({ onSearch, onFilterChange }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -33,25 +34,28 @@ const SearchBar = ({ onSearch, onFilterChange }) => {
 
   // Handle offer present change
   const handleOfferFilterChange = () => {
-    setShowOffersOnly(!showOffersOnly);
-    onFilterChange('offer', !showOffersOnly);  // Notify the parent component or call an external function if needed
-    onSearch(searchQuery, selectedCategory, minPrice, maxPrice,minRating,sellerName, showOffersOnly ? 'offer' : '');
+    const newShowOffersOnly = !showOffersOnly;
+    setShowOffersOnly(newShowOffersOnly);
+    onFilterChange('offer', newShowOffersOnly);
+    onSearch(searchQuery, selectedCategory, minPrice, maxPrice, minRating, sellerName, newShowOffersOnly);
   };
   
 // Handle min price change
 const handleMinPriceChange = (event) => {
   const newMinPrice = event.target.value === '' ? 0 : Number(event.target.value);
   setMinPrice(newMinPrice);
-  onFilterChange('price', [newMinPrice, maxPrice || 'All']);
-  onSearch(searchQuery, selectedCategory, newMinPrice, maxPrice || 'All', minRating,sellerName,showOffersOnly);
+  const effectiveMaxPrice = maxPrice === '' ? Infinity : maxPrice; // If maxPrice is empty, use Infinity
+  onFilterChange('price', [newMinPrice, effectiveMaxPrice]);
+  onSearch(searchQuery, selectedCategory, newMinPrice, effectiveMaxPrice, minRating, sellerName, showOffersOnly);
 };
 
 // Handle max price change
 const handleMaxPriceChange = (event) => {
-  const newMaxPrice = event.target.value === '' ? 'All' : Number(event.target.value);
+  const newMaxPrice = event.target.value === '' ? Infinity : Number(event.target.value); // Default to Infinity if no max price
   setMaxPrice(newMaxPrice);
-  onFilterChange('price', [minPrice || 0, newMaxPrice]);
-  onSearch(searchQuery, selectedCategory, minPrice || 0, newMaxPrice, minRating,sellerName,showOffersOnly);
+  const effectiveMinPrice = minPrice === '' ? 0 : minPrice; // If minPrice is empty, use 0
+  onFilterChange('price', [effectiveMinPrice, newMaxPrice]);
+  onSearch(searchQuery, selectedCategory, effectiveMinPrice, newMaxPrice, minRating, sellerName, showOffersOnly);
 };
 
 // Generate price options, adding 'All' for max price
@@ -142,10 +146,10 @@ const generatePriceOptions = () => {
         >
           <option value="All">All Categories</option>
           <option value="Electronics">Electronics</option>
-          <option value="Clothing">Accessories</option>
-          <option value="Furniture">Fitness</option>
-          <option value="Books">Health</option>
-          <option value="Books">Home Appliances</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Fitness">Fitness</option>
+          <option value="Health">Health</option>
+          <option value="Home Appliances">Home Appliances</option>
         </select>
 
         {/* Price Filter */}
@@ -233,21 +237,22 @@ const generatePriceOptions = () => {
 
         {/* Offer Filter */}
         <button
-          className={`filter-chip ${showOffersOnly ? 'selected' : ''}`}
-          onClick={handleOfferFilterChange}
-          style={{
-            backgroundColor: showOffersOnly ? '#4CAF50' : '#f0f0f0',
-            border: '1px solid #ccc',
-            borderRadius: '50px',
-            padding: '10px 20px',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s ease',
-            fontSize: '14px',
-            color: showOffersOnly ? 'white' : 'black',
-          }}
-        >
-          {showOffersOnly ? 'Show All Products' : 'Show Products with Offers'}
-        </button>
+  className={`filter-chip ${showOffersOnly ? 'selected' : ''}`} // Correct string interpolation syntax
+  onClick={handleOfferFilterChange}
+  style={{
+    backgroundColor: showOffersOnly ? '#4CAF50' : '#f0f0f0',
+    border: '1px solid #ccc',
+    borderRadius: '50px',
+    padding: '10px 20px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+    fontSize: '14px',
+    color: showOffersOnly ? 'white' : 'black',
+  }}
+>
+  {showOffersOnly ? 'Show All Products' : 'Show Products with Offers'}
+</button>
+
 
 
           {/* Clear Button */}

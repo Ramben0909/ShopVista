@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // src/pages/context/authcontext.jsx
 import { createContext, useState, useEffect } from 'react';
 
@@ -6,20 +7,23 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
+  const [user, setUser] = useState(null); // Added user state to store user details
   const [cartItems, setCartItems] = useState(() => {
     // Initialize cart from localStorage if available
     const savedCart = localStorage.getItem('cartItems');
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  // Function to handle user login
-  const login = () => {
+  // Function to handle user login (set user details)
+  const login = (userData) => {
     setIsAuthenticated(true);
+    setUser(userData); // Store user details on login
   };
 
   // Function to handle user logout
   const logout = () => {
     setIsAuthenticated(false);
+    setUser(null); // Clear user details on logout
   };
 
   // Function to handle user registration
@@ -54,6 +58,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         isAuthenticated,
         isRegistered,
+        user, // Provide user details in context
         login,
         logout,
         register,
@@ -67,4 +72,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthContext;
+export default AuthContext; // Default export retained

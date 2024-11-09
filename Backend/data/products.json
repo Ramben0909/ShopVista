@@ -1,218 +1,417 @@
-[
+[  {
+  "product_id": "P001",
+  "product_name": "Wireless Headphones",
+  "seller_name": "AudioTech Store",
+  "seller_location": "New York, USA",
+  "item_description": "High-quality wireless headphones with noise-cancellation and deep bass.",
+  "rating": 2.2,
+  "specifications": {
+    "battery_life": "20 hours",
+    "color": "Black",
+    "bluetooth_version": "5.0",
+    "weight": "250g"
+  },
+  "offers": [
+    "10% off on first purchase",
+    "Free shipping on orders over $50"
+  ],
+  "price": 179.99,
+  "category": "Electronics",
+  "has_offer": true,
+  "image": "/images/P001.jpg"
+},
+{
+  "product_id": "P002",
+  "product_name": "Smartphone 12 Pro",
+  "seller_name": "TechnoWorld",
+  "seller_location": "San Francisco, USA",
+  "item_description": "The latest smartphone with 5G support, great camera, and long-lasting battery.",
+  "rating": 4.8,
+  "specifications": {
+    "screen_size": "6.5 inches",
+    "battery_capacity": "4500mAh",
+    "camera_resolution": "108MP",
+    "processor": "Snapdragon 888"
+  },
+  "offers": [
+    "15% off for students",
+    "Free wireless earbuds with every purchase"
+  ],
+  "price": 999.99,
+  "category": "Electronics",
+  "has_offer": true,
+  "image": "/images/P002.jpg"
+},
+{
+  "product_id": "P003",
+  "product_name": "Gaming Laptop",
+  "seller_name": "Gamer's Paradise",
+  "seller_location": "Los Angeles, USA",
+  "item_description": "High-performance gaming laptop with powerful GPU and smooth gameplay.",
+  "rating": 4.7,
+  "specifications": {
+    "processor": "Intel i7",
+    "gpu": "NVIDIA RTX 3060",
+    "ram": "16GB",
+    "storage": "1TB SSD"
+  },
+  "offers": [
+    "20% off on accessories with purchase",
+    "1-year warranty included"
+  ],
+  "price": 1499.99,
+  "category": "Electronics",
+  "has_offer": true,
+  "image": "/images/P003.jpg"
+},
+{
+  "product_id": "P004",
+  "product_name": "4K Ultra HD Smart TV",
+  "seller_name": "Home Electronics",
+  "seller_location": "Chicago, USA",
+  "item_description": "Experience stunning visuals and smart features with this 4K Ultra HD TV.",
+  "rating": 4.6,
+  "specifications": {
+    "screen_size": "55 inches",
+    "resolution": "3840x2160",
+    "smart_features": "Netflix, Hulu, YouTube",
+    "ports": "3 HDMI, 2 USB"
+  },
+  "offers": [
+    "Free installation included",
+    "10% off for old customers"
+  ],
+  "price": 799.99,
+  "category": "Electronics",
+  "has_offer": true,
+  "image": "/images/P004.jpg"
+},
+{
+  "product_id": "P005",
+  "product_name": "Bluetooth Speaker",
+  "seller_name": "SoundWave",
+  "seller_location": "Austin, USA",
+  "item_description": "Portable Bluetooth speaker with deep bass and water resistance.",
+  "rating": 4.3,
+  "specifications": {
+    "battery_life": "12 hours",
+    "color": "Blue",
+    "bluetooth_version": "5.0",
+    "water_resistant": "IPX7"
+  },
+  "offers": [
+    "5% off for returning customers",
+    "Free shipping on orders over $30"
+  ],
+  "price": 1049.99,
+  "category": "Electronics",
+  "has_offer": true,
+  "image": "/images/P005.jpg"
+},
+{
+  "product_id": "P006",
+  "product_name": "Smartwatch Series 5",
+  "seller_name": "Wearable Tech",
+  "seller_location": "Boston, USA",
+  "item_description": "Track your health and fitness with this stylish smartwatch.",
+  "rating": 3.7,
+  "specifications": {
+    "screen_size": "1.7 inches",
+    "battery_life": "48 hours",
+    "water_resistant": "Yes",
+    "compatible_with": "iOS, Android"
+  },
+  "offers": [
+    "10% off on first order",
+    "Free band with every purchase"
+  ],
+  "price": 1999.99,
+  "category": "Electronics",
+  "has_offer": true,
+  "image": "/images/P006.jpg"
+},
+{
+  "product_id": "P007",
+  "product_name": "Electric Toothbrush",
+  "seller_name": "Health Plus",
+  "seller_location": "Miami, USA",
+  "item_description": "Powerful electric toothbrush with multiple modes for a better cleaning experience.",
+  "rating": 4.4,
+  "specifications": {
+    "battery_life": "1 month",
+    "color": "White",
+    "charging_time": "2 hours",
+    "modes": "Sensitive, Clean, Whitening"
+  },
+  "offers": [
+    "10% off for new customers",
+    "Buy 1 Get 1 Free on selected models"
+  ],
+  "price": 959.99,
+  "category": "Health",
+  "has_offer": true,
+  "image": "/images/P007.jpg"
+},
+{
+  "product_id": "P008",
+  "product_name": "Laptop Backpack",
+  "seller_name": "Urban Gear",
+  "seller_location": "Seattle, USA",
+  "item_description": "Durable and stylish laptop backpack with multiple compartments.",
+  "rating": 4.2,
+  "specifications": {
+    "material": "Water-resistant fabric",
+    "dimensions": "18 x 12 x 6 inches",
+    "capacity": "Up to 15-inch laptop",
+    "pockets": "4"
+  },
+  "offers": [
+    "10% off on your first order",
+    "Free shipping on orders over $40"
+  ],
+  "price": 1049.99,
+  "category": "Accessories",
+  "has_offer": true,
+  "image": "/images/P008.jpg"
+},
+{
+  "product_id": "P009",
+  "product_name": "Fitness Tracker",
+  "seller_name": "FitTech",
+  "seller_location": "Dallas, USA",
+  "item_description": "Track your fitness progress with this compact and accurate fitness tracker.",
+  "rating": 4.6,
+  "specifications": {
+    "battery_life": "7 days",
+    "color": "Black",
+    "features": "Heart Rate Monitor, Step Counter, Sleep Tracker"
+  },
+  "offers": [
+    "15% off for first-time buyers",
+    "Free app subscription for 1 month"
+  ],
+  "price": 1179.99,
+  "category": "Fitness",
+  "has_offer": true,
+  "image": "/images/P009.jpg"
+},
+{
+  "product_id": "P010",
+  "product_name": "Air Fryer",
+  "seller_name": "KitchenTech",
+  "seller_location": "Houston, USA",
+  "item_description": "Cook your favorite fried foods with less oil using this efficient air fryer.",
+  "rating": 4.7,
+  "specifications": {
+    "capacity": "3.5L",
+    "temperature_range": "180°C - 200°C",
+    "color": "Silver",
+    "power": "1500W"
+  },
+  "offers": [],
+  "price": 999.99,
+  "category": "Home Appliances",
+  "has_offer": false,
+  "image":"/images/P010.jpg"
+  },
   {
-    "product_id": "P001",
-    "product_name": "Wireless Headphones",
-    "seller_name": "AudioTech Store",
-    "seller_location": "New York, USA",
-    "item_description": "High-quality wireless headphones with noise-cancellation and deep bass.",
-    "rating": 2.2,
+    "product_id": "P011",
+    "product_name": "Wireless Keyboard and Mouse Combo",
+    "seller_name": "Office Essentials",
+    "seller_location": "Newark, USA",
+    "item_description": "Ergonomic wireless keyboard and mouse combo for comfortable typing.",
+    "rating": 4.5,
     "specifications": {
-      "battery_life": "20 hours",
+      "connectivity": "2.4GHz Wireless",
+      "battery_life": "12 months",
       "color": "Black",
-      "bluetooth_version": "5.0",
-      "weight": "250g"
-    },
-    "offers": [
-      "10% off on first purchase",
-      "Free shipping on orders over $50"
-    ],
-    "price": 179.99,
-    "category": "Electronics",
-    "has_offer": true,
-    "image": "/images/P001.jpg"
-  },
-  {
-    "product_id": "P002",
-    "product_name": "Smartphone 12 Pro",
-    "seller_name": "TechnoWorld",
-    "seller_location": "San Francisco, USA",
-    "item_description": "The latest smartphone with 5G support, great camera, and long-lasting battery.",
-    "rating": 4.8,
-    "specifications": {
-      "screen_size": "6.5 inches",
-      "battery_capacity": "4500mAh",
-      "camera_resolution": "108MP",
-      "processor": "Snapdragon 888"
-    },
-    "offers": [
-      "15% off for students",
-      "Free wireless earbuds with every purchase"
-    ],
-    "price": 999.99,
-    "category": "Electronics",
-    "has_offer": true,
-    "image": "/images/P002.jpg"
-  },
-  {
-    "product_id": "P003",
-    "product_name": "Gaming Laptop",
-    "seller_name": "Gamer's Paradise",
-    "seller_location": "Los Angeles, USA",
-    "item_description": "High-performance gaming laptop with powerful GPU and smooth gameplay.",
-    "rating": 4.7,
-    "specifications": {
-      "processor": "Intel i7",
-      "gpu": "NVIDIA RTX 3060",
-      "ram": "16GB",
-      "storage": "1TB SSD"
-    },
-    "offers": [
-      "20% off on accessories with purchase",
-      "1-year warranty included"
-    ],
-    "price": 1499.99,
-    "category": "Electronics",
-    "has_offer": true,
-    "image": "/images/P003.jpg"
-  },
-  {
-    "product_id": "P004",
-    "product_name": "4K Ultra HD Smart TV",
-    "seller_name": "Home Electronics",
-    "seller_location": "Chicago, USA",
-    "item_description": "Experience stunning visuals and smart features with this 4K Ultra HD TV.",
-    "rating": 4.6,
-    "specifications": {
-      "screen_size": "55 inches",
-      "resolution": "3840x2160",
-      "smart_features": "Netflix, Hulu, YouTube",
-      "ports": "3 HDMI, 2 USB"
-    },
-    "offers": [
-      "Free installation included",
-      "10% off for old customers"
-    ],
-    "price": 799.99,
-    "category": "Electronics",
-    "has_offer": true,
-    "image": "/images/P004.jpg"
-  },
-  {
-    "product_id": "P005",
-    "product_name": "Bluetooth Speaker",
-    "seller_name": "SoundWave",
-    "seller_location": "Austin, USA",
-    "item_description": "Portable Bluetooth speaker with deep bass and water resistance.",
-    "rating": 4.3,
-    "specifications": {
-      "battery_life": "12 hours",
-      "color": "Blue",
-      "bluetooth_version": "5.0",
-      "water_resistant": "IPX7"
-    },
-    "offers": [
-      "5% off for returning customers",
-      "Free shipping on orders over $30"
-    ],
-    "price": 1049.99,
-    "category": "Electronics",
-    "has_offer": true,
-    "image": "/images/P005.jpg"
-  },
-  {
-    "product_id": "P006",
-    "product_name": "Smartwatch Series 5",
-    "seller_name": "Wearable Tech",
-    "seller_location": "Boston, USA",
-    "item_description": "Track your health and fitness with this stylish smartwatch.",
-    "rating": 3.7,
-    "specifications": {
-      "screen_size": "1.7 inches",
-      "battery_life": "48 hours",
-      "water_resistant": "Yes",
-      "compatible_with": "iOS, Android"
-    },
-    "offers": [
-      "10% off on first order",
-      "Free band with every purchase"
-    ],
-    "price": 1999.99,
-    "category": "Electronics",
-    "has_offer": true,
-    "image": "/images/P006.jpg"
-  },
-  {
-    "product_id": "P007",
-    "product_name": "Electric Toothbrush",
-    "seller_name": "Health Plus",
-    "seller_location": "Miami, USA",
-    "item_description": "Powerful electric toothbrush with multiple modes for a better cleaning experience.",
-    "rating": 4.4,
-    "specifications": {
-      "battery_life": "1 month",
-      "color": "White",
-      "charging_time": "2 hours",
-      "modes": "Sensitive, Clean, Whitening"
+      "range": "10 meters"
     },
     "offers": [
       "10% off for new customers",
-      "Buy 1 Get 1 Free on selected models"
+      "Free batteries included"
     ],
-    "price": 959.99,
-    "category": "Health",
-    "has_offer": true,
-    "image": "/images/P007.jpg"
+    "image": "/images/1.jpeg",
+    "price": 29.99
   },
   {
-    "product_id": "P008",
-    "product_name": "Laptop Backpack",
-    "seller_name": "Urban Gear",
-    "seller_location": "Seattle, USA",
-    "item_description": "Durable and stylish laptop backpack with multiple compartments.",
-    "rating": 4.2,
+    "product_id": "P012",
+    "product_name": "Home Security Camera",
+    "seller_name": "SecureTech",
+    "seller_location": "Dallas, USA",
+    "item_description": "Smart home security camera with motion detection and night vision.",
+    "rating": 4.7,
     "specifications": {
-      "material": "Water-resistant fabric",
-      "dimensions": "18 x 12 x 6 inches",
-      "capacity": "Up to 15-inch laptop",
-      "pockets": "4"
+      "resolution": "1080p",
+      "field_of_view": "130°",
+      "connectivity": "Wi-Fi",
+      "power": "USB powered"
+    },
+    "offers": [
+      "15% off on first order",
+      "Free cloud storage for 6 months"
+    ],
+    "image": "/images/2.jpeg",
+    "price": 119.99
+  },
+  {
+    "product_id": "P013",
+    "product_name": "Robot Vacuum Cleaner",
+    "seller_name": "CleanMaster",
+    "seller_location": "Chicago, USA",
+    "item_description": "Automatic robot vacuum cleaner with mapping and mopping features.",
+    "rating": 4.6,
+    "specifications": {
+      "battery_life": "120 minutes",
+      "cleaning_modes": "3",
+      "dust_capacity": "500ml",
+      "navigation": "LIDAR"
+    },
+    "offers": [
+      "10% off on accessories",
+      "Free mop attachment included"
+    ],
+    "image": "/images/3.jpeg",
+    "price": 249.99
+  },
+  {
+    "product_id": "P014",
+    "product_name": "Digital SLR Camera",
+    "seller_name": "PhotoHub",
+    "seller_location": "San Francisco, USA",
+    "item_description": "High-resolution DSLR camera with interchangeable lenses.",
+    "rating": 4.8,
+    "specifications": {
+      "sensor": "24MP",
+      "lens_mount": "EF-S",
+      "battery_life": "1000 shots",
+      "video_resolution": "4K"
+    },
+    "offers": [
+      "5% off for students",
+      "Free carrying case with purchase"
+    ],
+    "image": "/images/4.jpeg",
+    "price": 699.99
+  },
+  {
+    "product_id": "P015",
+    "product_name": "Electric Kettle",
+    "seller_name": "KitchenPro",
+    "seller_location": "Austin, USA",
+    "item_description": "Fast-boiling electric kettle with auto shut-off feature.",
+    "rating": 4.3,
+    "specifications": {
+      "capacity": "1.7L",
+      "power": "1500W",
+      "material": "Stainless steel",
+      "safety": "Auto shut-off, Boil-dry protection"
+    },
+    "offers": [
+      "10% off on first order",
+      "Free shipping"
+    ],
+    "image": "/images/5.jpeg",
+    "price": 39.99
+  },
+  {
+    "product_id": "P016",
+    "product_name": "Portable Power Bank",
+    "seller_name": "PowerHouse",
+    "seller_location": "Seattle, USA",
+    "item_description": "Compact and high-capacity power bank for charging on the go.",
+    "rating": 4.4,
+    "specifications": {
+      "capacity": "20000mAh",
+      "output_ports": "2 USB, 1 USB-C",
+      "weight": "450g",
+      "charging_time": "4 hours"
+    },
+    "offers": [
+      "5% off for returning customers",
+      "Free USB-C cable included"
+    ],
+    "image": "/images/6.jpeg",
+    "price": 49.99
+  },
+  {
+    "product_id": "P017",
+    "product_name": "Smart Thermostat",
+    "seller_name": "Home Comfort",
+    "seller_location": "Houston, USA",
+    "item_description": "Wi-Fi-enabled smart thermostat with energy-saving features.",
+    "rating": 4.6,
+    "specifications": {
+      "connectivity": "Wi-Fi",
+      "compatibility": "Alexa, Google Home",
+      "display": "Touchscreen",
+      "sensors": "Temperature, Humidity"
+    },
+    "offers": [
+      "10% off installation",
+      "Free app subscription for 1 year"
+    ],
+    "image": "/images/7.jpeg",
+    "price": 129.99
+  },
+  {
+    "product_id": "P018",
+    "product_name": "Yoga Mat",
+    "seller_name": "FitGear",
+    "seller_location": "Denver, USA",
+    "item_description": "Non-slip, eco-friendly yoga mat for a comfortable workout.",
+    "rating": 4.5,
+    "specifications": {
+      "material": "TPE",
+      "thickness": "6mm",
+      "dimensions": "183 x 61 cm",
+      "color": "Green"
+    },
+    "offers": [
+      "Buy 1 Get 1 50% off",
+      "Free carrying strap"
+    ],
+    "image": "/images/8.jpeg",
+    "price": 24.99
+  },
+  {
+    "product_id": "P019",
+    "product_name": "Outdoor BBQ Grill",
+    "seller_name": "GrillMaster",
+    "seller_location": "Phoenix, USA",
+    "item_description": "Stainless steel BBQ grill with adjustable heat settings.",
+    "rating": 4.7,
+    "specifications": {
+      "grill_size": "450 sq.in",
+      "fuel": "Propane",
+      "material": "Stainless steel",
+      "temperature_range": "200°F - 700°F"
+    },
+    "offers": [
+      "15% off for new customers",
+      "Free grill cover included"
+    ],
+    "image": "/images/9.jpeg",
+    "price": 299.99
+  },
+  {
+    "product_id": "P020",
+    "product_name": "USB-C Hub",
+    "seller_name": "TechAccessories",
+    "seller_location": "Miami, USA",
+    "item_description": "Multi-port USB-C hub with HDMI, USB, and SD card slots.",
+    "rating": 4.4,
+    "specifications": {
+      "ports": "4 USB, 1 HDMI, 1 SD",
+      "material": "Aluminum",
+      "compatibility": "Mac, Windows, Chromebook",
+      "color": "Gray"
     },
     "offers": [
       "10% off on your first order",
-      "Free shipping on orders over $40"
+      "Free travel pouch"
     ],
-    "price": 1049.99,
-    "category": "Accessories",
-    "has_offer": true,
-    "image": "/images/P008.jpg"
-  },
-  {
-    "product_id": "P009",
-    "product_name": "Fitness Tracker",
-    "seller_name": "FitTech",
-    "seller_location": "Dallas, USA",
-    "item_description": "Track your fitness progress with this compact and accurate fitness tracker.",
-    "rating": 4.6,
-    "specifications": {
-      "battery_life": "7 days",
-      "color": "Black",
-      "features": "Heart Rate Monitor, Step Counter, Sleep Tracker"
-    },
-    "offers": [
-      "15% off for first-time buyers",
-      "Free app subscription for 1 month"
-    ],
-    "price": 1179.99,
-    "category": "Fitness",
-    "has_offer": true,
-    "image": "/images/P009.jpg"
-  },
-  {
-    "product_id": "P010",
-    "product_name": "Air Fryer",
-    "seller_name": "KitchenTech",
-    "seller_location": "Houston, USA",
-    "item_description": "Cook your favorite fried foods with less oil using this efficient air fryer.",
-    "rating": 4.7,
-    "specifications": {
-      "capacity": "3.5L",
-      "temperature_range": "180°C - 200°C",
-      "color": "Silver",
-      "power": "1500W"
-    },
-    "offers": [],
-    "price": 999.99,
-    "category": "Home Appliances",
-    "has_offer": false,
-    "image":"/images/P010.jpg"
+    "image": "/images/10.jpeg",
+    "price": 39.99
   }
 ]
