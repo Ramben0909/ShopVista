@@ -1,48 +1,57 @@
-// src/pages/DummyProfile.jsx
-import React, { useEffect } from 'react';
-import { useAuth } from './context/useAuth';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-import Layout from '../components/layout/layout';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../pages/context/useAuth';
+import Layout from '../components/layout/layout.jsx';
+import { toast } from 'react-toastify';  // For showing toast messages on errors
 
 function DummyProfile() {
-  const { isAuthenticated, logout } = useAuth();
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const { user, isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
+  const [loadingUser, setLoadingUser] = useState(true);  // Track user data loading state
 
-  // Redirect to login page if not authenticated
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate('/login'); // Redirect to login page if not authenticated
+      navigate('/login');
+    } else {
+      setLoadingUser(false);  // If user is authenticated, stop loading state
     }
   }, [isAuthenticated, navigate]);
 
   const handleLogout = () => {
-    logout(); // Call logout function from context
-    navigate('/login'); // Redirect to login page after logout
+    logout();
+    navigate('/login');
   };
 
-  // Only render the profile page if the user is authenticated
-  if (!isAuthenticated) {
-    return null; // Optionally render nothing here, as user will be redirected
+  if (loadingUser) {
+    return (
+      <div style={styles.loadingContainer}>
+        <p>Loading your profile...</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    toast.error("Failed to load user data. Please try again.");
+    return <div>Error loading profile data.</div>;
   }
 
   return (
-    <Layout>
+    <Layout title="Profile">
       <div style={styles.profileContainer}>
-        <h1>Dummy Profile</h1>
-        <p>This is a placeholder profile page for demonstration purposes.</p>
+        <h1>Profile</h1>
+        <p>This is the user&apos;s profile page.</p>
 
-        {/* User Info */}
+        {/* Display user details */}
         <div style={styles.profileInfo}>
           <h2>Personal Information</h2>
           <ul>
-            <li><strong>Name:</strong> John Doe</li>
-            <li><strong>Email:</strong> johndoe@example.com</li>
-            <li><strong>Username:</strong> johndoe123</li>
-            <li><strong>Member Since:</strong> January 2024</li>
+            <li><strong>Name:</strong> {user.name}</li>
+            <li><strong>Email:</strong> {user.email}</li>
+            <li><strong>Address:</strong> {user.address}</li>
+            <li><strong>Phone:</strong> {user.phone}</li>
           </ul>
         </div>
 
-        {/* Logout Button */}
         <button onClick={handleLogout} style={styles.logoutButton}>Logout</button>
       </div>
     </Layout>
@@ -70,7 +79,14 @@ const styles = {
     cursor: 'pointer',
     fontSize: '16px',
     marginTop: '20px',
-  }
+  },
+  loadingContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    fontSize: '18px',
+  },
 };
 
 export default DummyProfile;

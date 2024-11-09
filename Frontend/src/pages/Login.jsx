@@ -1,47 +1,49 @@
-// Login.jsx
 import { useState } from 'react';
 import Layout from '../components/layout/layout';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../pages/context/useAuth.jsx';  // Importing useAuth hook
+import { useAuth } from '../pages/context/useAuth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // To navigate after successful login
-  const { login } = useAuth(); // Using the login function from context
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
+  // Handle the form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    // Basic validation for email and password
+    if (!email || !password) {
+      toast.error('Please fill in both fields.');
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await axios.post(`${import.meta.env.VITE_API}/api/v1/auth/login`, { email, password });
-      console.log(response);
-      
+
       if (response.data.success === "Successful") {
-        localStorage.setItem('token', response.data.token);
+        login(response.data.token, response.data.user);  // Pass token and user data
         toast.success(response.data.message);
-
-        // Update the authentication state
-        login();
-
-        navigate('/'); // Redirect to home or dashboard after login
+        navigate('/dummyprofile');;  // Redirect to homepage or dashboard
       } else {
         toast.error(response.data.message);
       }
     } catch (error) {
       toast.error('Login failed. Please try again!');
-      console.log(error);
+      console.error('Login error:', error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Layout title={"Login"}>
+    <Layout title="Login">
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-6">
@@ -72,7 +74,11 @@ const Login = () => {
                 />
               </div>
               <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-                {loading ? 'Logging in...' : 'Login'}
+                {loading ? (
+                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                ) : (
+                  'Login'
+                )}
               </button>
             </form>
           </div>

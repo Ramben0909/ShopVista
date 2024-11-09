@@ -1,5 +1,3 @@
-// Register.jsx
-
 import { useState } from 'react';
 import Layout from '../../components/layout/layout.jsx';
 import axios from 'axios';
@@ -150,6 +148,10 @@ const Register = () => {
             {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
+
+        <div className="mt-3 text-center">
+          <p>Already have an account? <button className="btn btn-link" onClick={() => navigate('/login')}>Login</button></p>
+        </div>
       </div>
     </Layout>
   );

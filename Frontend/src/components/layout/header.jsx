@@ -1,4 +1,3 @@
-// src/components/layout/header.jsx
 import { Link} from 'react-router-dom';
 import { useAuth } from "../../pages/context/useAuth";
 
