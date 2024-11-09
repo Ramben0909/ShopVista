@@ -12,6 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import DummyProfile from './pages/dummyProfile.jsx';
 
 
+import MyCart from './pages/MyCart.jsx';
+import ProductDetails from './pages/ProductDetails.jsx'
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/mycart" element={<MyCart />} />
+        <Route path="/productdetails/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dummyprofile" element={<DummyProfile />} /> {/* Add DummyProfile route */}
         <Route path="*" element={<PageNotFound />} />
