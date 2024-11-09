@@ -1,28 +1,30 @@
-import { useEffect, useState } from 'react';
+// src/pages/DummyProfile.jsx
+import  { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../pages/context/useAuth';
-import Layout from '../components/layout/layout.jsx';
-import { toast } from 'react-toastify';  // For showing toast messages on errors
+import { useAuth } from './context/useAuth'; // Import useAuth hook
+import Layout from '../components/layout/layout';
+import { toast } from 'react-toastify';
 
 function DummyProfile() {
   const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
-  const [loadingUser, setLoadingUser] = useState(true);  // Track user data loading state
+  const [loading, setLoading] = useState(true); // Loading state to handle loading effect
 
   useEffect(() => {
+    // Redirect to login page if user is not authenticated
     if (!isAuthenticated) {
       navigate('/login');
     } else {
-      setLoadingUser(false);  // If user is authenticated, stop loading state
+      setLoading(false); // Stop loading when user is authenticated
     }
   }, [isAuthenticated, navigate]);
 
   const handleLogout = () => {
-    logout();
-    navigate('/login');
+    logout(); // Call logout function from AuthContext
+    navigate('/login'); // Redirect to login page
   };
 
-  if (loadingUser) {
+  if (loading) {
     return (
       <div style={styles.loadingContainer}>
         <p>Loading your profile...</p>
@@ -31,7 +33,7 @@ function DummyProfile() {
   }
 
   if (!user) {
-    toast.error("Failed to load user data. Please try again.");
+    toast.error('Failed to load user data. Please try again.');
     return <div>Error loading profile data.</div>;
   }
 
@@ -47,8 +49,8 @@ function DummyProfile() {
           <ul>
             <li><strong>Name:</strong> {user.name}</li>
             <li><strong>Email:</strong> {user.email}</li>
-            <li><strong>Address:</strong> {user.address}</li>
-            <li><strong>Phone:</strong> {user.phone}</li>
+            <li><strong>Address:</strong> {user.address || 'Not available'}</li>
+            <li><strong>Phone:</strong> {user.phone || 'Not available'}</li>
           </ul>
         </div>
 

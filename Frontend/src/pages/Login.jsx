@@ -27,13 +27,14 @@ const Login = () => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_API}/api/v1/auth/login`, { email, password });
 
-      if (response.data.success === "Successful") {
-        login(response.data.token, response.data.user);  // Pass token and user data
+      if (response.data.success === true) {
+        login(response.data.token, response.data.user);
+        console.log(response.data.user)  // Pass token and user data
         toast.success(response.data.message);
-        navigate('/dummyprofile');;  // Redirect to homepage or dashboard
+        navigate('/');  // Navigate to home after login
       } else {
         toast.error(response.data.message);
-      }
+      }      
     } catch (error) {
       toast.error('Login failed. Please try again!');
       console.error('Login error:', error);
