@@ -7,16 +7,16 @@ export const registerController = async (req, res) => {
   try {
     const { name, email, phone, address, password } = req.body; // Corrected the spelling of 'password'
 
-    if (!name) return res.send("Name is required");
-    if (!email) return res.send("Email is required");
-    if (!phone) return res.send("Phone is required");
-    if (!address) return res.send("Address is required");
-    if (!password) return res.send("Password is required");
+    if (!name) return res.status(400).send({ success: false, message: "Name is required" });
+    if (!email) return res.status(400).send({ success: false, message: "Email is required" });
+    if (!phone) return res.status(400).send({ success: false, message: "Phone is required" });
+    if (!address) return res.status(400).send({ success: false, message: "Address is required" });
+    if (!password) return res.status(400).send({ success: false, message: "Password is required" });
 
     const exist = await userModel.findOne({ email });
     if (exist) {
       return res.status(200).send({
-        success: true,
+        success: false,
         message: "Already registered. Please log in.",
       });
     }
@@ -97,6 +97,45 @@ export const loginController =async(req,res)=>{
    }
 }
 
+//forgotPasswordController
+export const forgotPasswordController =async(req,res) =>{
+  try {
+    const {email,answer, newPassword} =req.body
+    if(!email){
+      return res.status(400).send({message:'Email is required'})
+    }
+    if(!answer){
+      return res.status(400).send({message:'Answer is required'})
+    }
+    if(!newPassword){
+      return 
+      res.status(400).send({message:'New Password is required'})
+    }
+    //check
+    const user = await userModel.findOne({email,answer})
+    //validation
+    if(!user){
+      return res.status(404).send({
+        success:false,
+        message: 'Wrong Email or Answer'
+      })
+    }
+    const hashed = await hashedPassword(newPassword);
+    await userModel.findByIdAndUpdate(user._id,{password: hashed});
+    res.status(200).send({
+      success: true,
+      message:'Password Reset Successfully',
+    });
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({
+      success:false,
+      message:'Something went wrong',
+      error
+    })
+  }
+};
 
 export const testController = async(req,res) =>{
     console.log("Secure netWork");

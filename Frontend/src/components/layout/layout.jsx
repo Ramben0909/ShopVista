@@ -1,6 +1,9 @@
 import Header from './header.jsx';
 import Footer from './footer.jsx';
 import { Helmet } from 'react-helmet';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 // eslint-disable-next-line react/prop-types
 function Layout({ children,title,description,keywords,author }) {  // Destructure children from props
@@ -14,6 +17,7 @@ function Layout({ children,title,description,keywords,author }) {  // Destructur
         <title>{title}</title>
       </Helmet>
       <Header />
+      <ToastContainer />
       <main style={{ minHeight: '80vh' }}>
         {children}
       </main>
