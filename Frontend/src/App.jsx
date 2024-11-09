@@ -9,6 +9,8 @@ import PageNotFound from './pages/PageNotFound.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Auth/register.jsx';
 import 'react-toastify/dist/ReactToastify.css';
+import MyCart from './pages/MyCart.jsx';
+import ProductDetails from './pages/ProductDetails.jsx'
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/mycart" element={<MyCart />} />
+        <Route path="/productdetails/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
