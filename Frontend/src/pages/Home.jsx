@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useAuth } from '../pages/context/useAuth.jsx'; // Import the useAuth hook
 import Layout from '../components/layout/layout.jsx';
 import SearchBar from './SearchBar.jsx';
 
@@ -12,7 +14,8 @@ const Home = () => {
   const [minRating, setMinRating] = useState(0);
   const [sellerName, setSellerName] = useState('');  // Added seller name state
   const [showOffersOnly, setShowOffersOnly] = useState(false);
-  
+  const { addToCart } = useAuth(); // Access addToCart function from context
+  const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,7 +35,7 @@ const Home = () => {
     fetchProducts();
   }, []);
 
-  const handleSearch = (query, category, minPrice, maxPrice, minRating,sellerName, showOffersOnly) => {
+  const handleSearch = (query, category, minPrice, maxPrice, minRating, sellerName, showOffersOnly) => {
     setQuery(query);
     let filtered = products;
 
@@ -66,19 +69,17 @@ const Home = () => {
     }
 
     // Filter by seller name
-  if (sellerName) {
-    filtered = filtered.filter((product) =>
-      product.seller_name.toLowerCase().includes(sellerName.toLowerCase())
-    );
-  }
-  
-  // Filter by offer present
-  if (showOffersOnly) {
-    setFilteredProducts(products.filter(product => product.offers.length > 0));
-  } else {
-    setFilteredProducts(products);
-  }
-  
+    if (sellerName) {
+      filtered = filtered.filter((product) =>
+        product.seller_name.toLowerCase().includes(sellerName.toLowerCase())
+      );
+    }
+
+    // Filter by offers presence
+    if (showOffersOnly) {
+      filtered = filtered.filter(product => product.offers.length > 0);
+    }
+
     setFilteredProducts(filtered);
   };
 
@@ -99,89 +100,67 @@ const Home = () => {
         {/* Search Bar and Category Filter */}
         <SearchBar onSearch={handleSearch} onFilterChange={handleFilterChange} />
         <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '24px' }}>Product Listings</h1>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '16px',
-            justifyContent: 'center',
-          }}
-        >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <div
                 key={product.product_id}
                 style={{
-                  border: '1px solid #e0e0e0',
-                  borderRadius: '10px',
-                  padding: '20px',
-                  width: '250px',
-                  textAlign: 'center',
-                  boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.3s ease-in-out',
-                  backgroundColor: '#fff',
+                  border: '1px solid #ccc',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                  maxWidth: '600px',
+                  margin: '0 auto',
                 }}
               >
+                <div style={{ flex: '1' }}>
+                  <h3 style={{ fontSize: '1.2rem', margin: '8px 0' }}>{product.product_name}</h3>
+                  <p style={{ fontSize: '0.9rem', color: '#555' }}>Rating: {product.rating} ⭐</p>
+                  <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#333' }}>${product.price}</p>
+                  <button
+                    onClick={() => addToCart(product)} // Add product to cart
+                    style={{
+                      backgroundColor: '#28a745',
+                      color: '#fff',
+                      border: 'none',
+                      padding: '8px 12px',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      marginTop: '8px',
+                      marginRight: '8px'
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    style={{
+                      backgroundColor: '#007bff',
+                      color: '#fff',
+                      border: 'none',
+                      padding: '8px 12px',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      marginTop: '8px'
+                    }}
+                    onClick={() => navigate(`/productdetails/${product.product_id}`)} // Navigate to product details
+                  >
+                    Show More
+                  </button>
+                </div>
                 <img
                   src={product.image}
                   alt={product.product_name}
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '8px',
-                    marginBottom: '16px',
-                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                  }}
+                  style={{ width: '150px', height: 'auto', borderRadius: '4px', marginLeft: '16px' }}
                 />
-                <h3 style={{ fontSize: '1.1rem', color: '#333', marginBottom: '8px' }}>
-                  {product.product_name}
-                </h3>
-                <p style={{ fontSize: '0.9rem', color: '#777', marginBottom: '12px' }}>
-                  Rating: {product.rating} ⭐
-                </p>
-                <p style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
-                  ${product.price}
-                </p>
-                <button
-                  style={{
-                    backgroundColor: '#28a745',
-                    color: '#fff',
-                    border: 'none',
-                    padding: '10px 16px',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    marginTop: '8px',
-                    width: '100%',
-                    fontSize: '1rem',
-                    transition: 'background-color 0.3s ease-in-out',
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#218838'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#28a745'}
-                >
-                  Add to Cart
-                </button>
-                <button
-                  style={{
-                    backgroundColor: '#007bff',
-                    color: '#fff',
-                    border: 'none',
-                    padding: '10px 16px',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    marginTop: '8px',
-                    width: '100%',
-                    fontSize: '1rem',
-                    transition: 'background-color 0.3s ease-in-out',
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0056b3'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#007bff'}
-                >
-                  Show More
-                </button>
               </div>
             ))
           ) : (
-            <p style={{ textAlign: 'center', fontSize: '1.2rem', color: '#555' }}>No products available</p>
+            <p>No products available</p>
           )}
         </div>
       </div>
