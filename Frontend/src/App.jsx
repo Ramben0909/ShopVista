@@ -9,7 +9,7 @@ import PageNotFound from './pages/PageNotFound.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Auth/register.jsx';
 import 'react-toastify/dist/ReactToastify.css';
-import DummyProfile from './pages/dummyProfile.jsx';
+import DummyProfile from './pages/DummyProfile.jsx';
 
 
 import MyCart from './pages/MyCart.jsx';
