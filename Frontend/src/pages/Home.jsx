@@ -12,21 +12,19 @@ const Home = () => {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [minRating, setMinRating] = useState(0);
-  const [sellerName, setSellerName] = useState('');  // Added seller name state
+  const [sellerName, setSellerName] = useState('');
   const [showOffersOnly, setShowOffersOnly] = useState(false);
-  const { addToCart } = useAuth(); // Access addToCart function from context
-  const navigate = useNavigate(); // Initialize navigate
-  const [loading, setLoading] = useState(true);  // State to track loading
-  const [error, setError] = useState(null);      // State to track any errors
   const { addToCart } = useAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/v1/products', {
           headers: {
-            'Cache-Control': 'no-cache', // Prevent caching
+            'Cache-Control': 'no-cache',
           },
         });
         if (!response.ok) {
@@ -35,11 +33,11 @@ const Home = () => {
         const data = await response.json();
         setProducts(data);
         setFilteredProducts(data);
-        setLoading(false); // Set loading to false once data is fetched
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching products:', error);
-        setError(error.message); // Set error message
-        setLoading(false); // Set loading to false in case of error
+        setError(error.message);
+        setLoading(false);
       }
     };
 
@@ -88,7 +86,7 @@ const Home = () => {
 
     // Filter by offers presence
     if (showOffersOnly) {
-      filtered = filtered.filter(product => product.offers.length > 0);
+      filtered = filtered.filter((product) => product.has_offer);
     }
 
     setFilteredProducts(filtered);
@@ -102,10 +100,13 @@ const Home = () => {
       setMaxPrice(value[1]);
     } else if (type === 'rating') {
       setMinRating(value);
+    } else if (type === 'seller') {
+      setSellerName(value);
+    } else if (type === 'offers') {
+      setShowOffersOnly(value);
     }
   };
 
-  // Display loading state or error message
   if (loading) {
     return (
       <Layout title="Home">
@@ -123,20 +124,22 @@ const Home = () => {
   }
 
   return (
-    <Layout title={'Home'}>
+    <Layout title="Home">
       <div style={{ padding: '20px' }}>
-        {/* Search Bar and Category Filter */}
-        <SearchBar onSearch={handleSearch} onFilterChange={handleFilterChange} />
+        <SearchBar
+          onSearch={handleSearch}
+          onFilterChange={handleFilterChange}
+          selectedCategory={selectedCategory}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          minRating={minRating}
+          sellerName={sellerName}
+          showOffersOnly={showOffersOnly}
+        />
         <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '24px' }}>Product Listings</h1>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
-    <Layout title="Home">
-      <div>
-        <h1>Product Listings</h1>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {products.length > 0 ? (
-            products.map((product) => (
               <div
                 key={product.product_id}
                 style={{
@@ -148,11 +151,10 @@ const Home = () => {
                   justifyContent: 'space-between',
                   width: '100%',
                   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                  maxWidth: '1200px', // Increased maxWidth to make the box wider
+                  maxWidth: '1200px',
                   margin: '0 auto',
                 }}
               >
-                {/* Product Info Section (Left) */}
                 <div style={{ flex: '1', marginRight: '16px' }}>
                   <h3 style={{ fontSize: '1.4rem', margin: '8px 0' }}>{product.product_name}</h3>
                   <p style={{ fontSize: '1rem', color: '#555' }}>Rating: {product.rating} ⭐</p>
@@ -167,7 +169,6 @@ const Home = () => {
                       borderRadius: '4px',
                       cursor: 'pointer',
                       marginTop: '8px',
-                      marginRight: '8px',
                     }}
                   >
                     Add to Cart
@@ -187,13 +188,11 @@ const Home = () => {
                     Show More
                   </button>
                 </div>
-
-                {/* Product Image Section (Right) */}
                 <img
-                  src={`http://localhost:5000${product.image}`} // Ensure the correct image URL
+                  src={`http://localhost:5000${product.image}`}
                   alt={product.product_name}
                   style={{
-                    width: '300px', // Larger image size
+                    width: '300px',
                     height: 'auto',
                     borderRadius: '4px',
                   }}

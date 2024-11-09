@@ -78,7 +78,7 @@ const Register = () => {
         <h2 className="text-center mb-4">Register</h2>
         {error && <div className="alert alert-danger">{error}</div>}
         {success && <div className="alert alert-success">{success}</div>}
-        <form onSubmit={handleSubmit} className="col-md-6 mx-auto">
+        <form onSubmit={handleSubmit} className="col-md-4 mx-auto">
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>
             <input

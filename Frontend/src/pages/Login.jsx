@@ -3,18 +3,15 @@ import Layout from '../components/layout/layout';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../pages/context/useAuth.jsx';
-import './Login.css'; // Importing the CSS file
 import { useAuth } from '../pages/context/useAuth';
+import './Login.css'; // Importing the CSS file
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
-  const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth(); // Using the login function from context
 
   // Handle the form submit
   const handleSubmit = async (e) => {
@@ -32,12 +29,15 @@ const Login = () => {
       const response = await axios.post(`${import.meta.env.VITE_API}/api/v1/auth/login`, { email, password });
 
       if (response.data.success === true) {
-        login(response.data.token, response.data.user);
-        console.log(response.data.user)  // Pass token and user data
+        // Pass the token and user data to context
+        const { token, user } = response.data; // Assuming the response contains token and user data
+        login(token, user); // Calling login function from context to store token and user data
+
+        console.log(user);  // Log user data for confirmation
         toast.success(response.data.message);
-        login();
+        
+        // Navigate to home or dashboard after successful login
         navigate('/'); 
-        navigate('/');  // Navigate to home after login
       } else {
         toast.error(response.data.message);
       }      
@@ -60,7 +60,7 @@ const Login = () => {
             <input
               type="email"
               className="form-control"
-              id=" email"
+              id="email"
               placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -83,46 +83,6 @@ const Login = () => {
             {loading ? 'Logging in...' : 'Log In'}
           </button>
         </form>
-    <Layout title="Login">
-      <div className="container mt-5">
-        <div className="row justify-content-center">
-          <div className="col-md-6">
-            <h2 className="text-center mb-4">Login</h2>
-            <form onSubmit={handleSubmit} className="p-4 border rounded shadow">
-              <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder="Enter email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  placeholder="Enter password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-                {loading ? (
-                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                ) : (
-                  'Login'
-                )}
-              </button>
-            </form>
-          </div>
-        </div>
       </div>
     </Layout>
   );
