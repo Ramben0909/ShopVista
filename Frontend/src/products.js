@@ -5,7 +5,7 @@
       "seller_name": "AudioTech Store",
       "seller_location": "New York, USA",
       "item_description": "High-quality wireless headphones with noise-cancellation and deep bass.",
-      "rating": 4.5,
+      "rating": 2,
       "specifications": {
         "battery_life": "20 hours",
         "color": "Black",

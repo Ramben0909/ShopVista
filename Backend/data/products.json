@@ -1,5 +1,11 @@
 [
   {
+    "product_id": "P001",
+    "product_name": "Wireless Headphones",
+    "seller_name": "AudioTech Store",
+    "seller_location": "New York, USA",
+    "item_description": "High-quality wireless headphones with noise-cancellation and deep bass.",
+    "rating": 2.2,
     "product_id": "P011",
     "product_name": "Wireless Keyboard and Mouse Combo",
     "seller_name": "Office Essentials",
@@ -16,10 +22,41 @@
       "10% off for new customers",
       "Free batteries included"
     ],
+    "price": 179.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P001.jpg"
     "image": "/images/1.jpeg",
     "price": 29.99
   },
   {
+    "product_id": "P002",
+    "product_name": "Smartphone 12 Pro",
+    "seller_name": "TechnoWorld",
+    "seller_location": "San Francisco, USA",
+    "item_description": "The latest smartphone with 5G support, great camera, and long-lasting battery.",
+    "rating": 4.8,
+    "specifications": {
+      "screen_size": "6.5 inches",
+      "battery_capacity": "4500mAh",
+      "camera_resolution": "108MP",
+      "processor": "Snapdragon 888"
+    },
+    "offers": [
+      "15% off for students",
+      "Free wireless earbuds with every purchase"
+    ],
+    "price": 999.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P002.jpg"
+  },
+  {
+    "product_id": "P003",
+    "product_name": "Gaming Laptop",
+    "seller_name": "Gamer's Paradise",
+    "seller_location": "Los Angeles, USA",
+    "item_description": "High-performance gaming laptop with powerful GPU and smooth gameplay.",
     "product_id": "P012",
     "product_name": "Home Security Camera",
     "seller_name": "SecureTech",
@@ -36,6 +73,10 @@
       "15% off on first order",
       "Free cloud storage for 6 months"
     ],
+    "price": 1499.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P003.jpg"
     "image": "/images/2.jpeg",
     "price": 119.99
   },
@@ -56,6 +97,10 @@
       "10% off on accessories",
       "Free mop attachment included"
     ],
+    "price": 799.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P004.jpg"
     "image": "/images/3.jpeg",
     "price": 249.99
   },
@@ -76,10 +121,20 @@
       "5% off for students",
       "Free carrying case with purchase"
     ],
+    "price": 1049.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P005.jpg"
     "image": "/images/4.jpeg",
     "price": 699.99
   },
   {
+    "product_id": "P006",
+    "product_name": "Smartwatch Series 5",
+    "seller_name": "Wearable Tech",
+    "seller_location": "Boston, USA",
+    "item_description": "Track your health and fitness with this stylish smartwatch.",
+    "rating": 3.7,
     "product_id": "P015",
     "product_name": "Electric Kettle",
     "seller_name": "KitchenPro",
@@ -96,6 +151,10 @@
       "10% off on first order",
       "Free shipping"
     ],
+    "price": 1999.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P006.jpg"
     "image": "/images/5.jpeg",
     "price": 39.99
   },
@@ -116,6 +175,10 @@
       "5% off for returning customers",
       "Free USB-C cable included"
     ],
+    "price": 959.99,
+    "category": "Health",
+    "has_offer": true,
+    "image": "/images/P007.jpg"
     "image": "/images/6.jpeg",
     "price": 49.99
   },
@@ -136,6 +199,10 @@
       "10% off installation",
       "Free app subscription for 1 year"
     ],
+    "price": 1049.99,
+    "category": "Accessories",
+    "has_offer": true,
+    "image": "/images/P008.jpg"
     "image": "/images/7.jpeg",
     "price": 129.99
   },
@@ -156,6 +223,10 @@
       "Buy 1 Get 1 50% off",
       "Free carrying strap"
     ],
+    "price": 1179.99,
+    "category": "Fitness",
+    "has_offer": true,
+    "image": "/images/P009.jpg"
     "image": "/images/8.jpeg",
     "price": 24.99
   },
@@ -192,6 +263,11 @@
       "compatibility": "Mac, Windows, Chromebook",
       "color": "Gray"
     },
+    "offers": [],
+    "price": 999.99,
+    "category": "Home Appliances",
+    "has_offer": false,
+    "image":"/images/P010.jpg"
     "offers": [
       "10% off on your first order",
       "Free travel pouch"
@@ -200,3 +276,4 @@
     "price": 39.99
   }
 ]
+
