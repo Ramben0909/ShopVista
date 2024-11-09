@@ -5,7 +5,7 @@
     "seller_name": "AudioTech Store",
     "seller_location": "New York, USA",
     "item_description": "High-quality wireless headphones with noise-cancellation and deep bass.",
-    "rating": 4.5,
+    "rating": 2.2,
     "specifications": {
       "battery_life": "20 hours",
       "color": "Black",
@@ -16,7 +16,10 @@
       "10% off on first purchase",
       "Free shipping on orders over $50"
     ],
-    "image": "https://drive.google.com/file/d/1qxfq5roT64pHZYDFJEYhTJFhYclBhUDc/view?usp=drive_link"
+    "price": 179.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P001.jpg"
   },
   {
     "product_id": "P002",
@@ -35,7 +38,10 @@
       "15% off for students",
       "Free wireless earbuds with every purchase"
     ],
-    "image": "https://drive.google.com/file/d/1eAPCaZz0vIMKpxuJksezqasWu-BqaT8r/view?usp=drive_link"
+    "price": 999.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P002.jpg"
   },
   {
     "product_id": "P003",
@@ -54,7 +60,10 @@
       "20% off on accessories with purchase",
       "1-year warranty included"
     ],
-    "image": "https://drive.google.com/file/d/1jixHhlwfRy2nHXHBtFaFO2TAi5T3zwEz/view?usp=drive_link"
+    "price": 1499.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P003.jpg"
   },
   {
     "product_id": "P004",
@@ -73,7 +82,10 @@
       "Free installation included",
       "10% off for old customers"
     ],
-    "image": "https://drive.google.com/file/d/1WbiQj2kB1FuXPSmt4rsrOBY6-_ipuPbv/view?usp=drive_link"
+    "price": 799.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P004.jpg"
   },
   {
     "product_id": "P005",
@@ -92,7 +104,10 @@
       "5% off for returning customers",
       "Free shipping on orders over $30"
     ],
-    "image": "https://drive.google.com/file/d/1kHdX49i3SuI7ELp07d4Pkjv8e1oFQ6N6/view?usp=drive_link"
+    "price": 1049.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P005.jpg"
   },
   {
     "product_id": "P006",
@@ -100,7 +115,7 @@
     "seller_name": "Wearable Tech",
     "seller_location": "Boston, USA",
     "item_description": "Track your health and fitness with this stylish smartwatch.",
-    "rating": 4.7,
+    "rating": 3.7,
     "specifications": {
       "screen_size": "1.7 inches",
       "battery_life": "48 hours",
@@ -111,7 +126,10 @@
       "10% off on first order",
       "Free band with every purchase"
     ],
-    "image": "https://drive.google.com/file/d/1rfn8NYIagNpB-9MAZSA16GbPugKgkf7w/view?usp=drive_link"
+    "price": 1999.99,
+    "category": "Electronics",
+    "has_offer": true,
+    "image": "/images/P006.jpg"
   },
   {
     "product_id": "P007",
@@ -130,7 +148,10 @@
       "10% off for new customers",
       "Buy 1 Get 1 Free on selected models"
     ],
-    "image": "https://drive.google.com/file/d/1TB5cE2A3twl7IrJzaUxag-NN5JdEN0Pj/view?usp=drive_link"
+    "price": 959.99,
+    "category": "Health",
+    "has_offer": true,
+    "image": "/images/P007.jpg"
   },
   {
     "product_id": "P008",
@@ -149,7 +170,10 @@
       "10% off on your first order",
       "Free shipping on orders over $40"
     ],
-    "image": "https://drive.google.com/file/d/1c228I8Kj9foslbjvqMXfE_541tAOOl0P/view?usp=drive_link"
+    "price": 1049.99,
+    "category": "Accessories",
+    "has_offer": true,
+    "image": "/images/P008.jpg"
   },
   {
     "product_id": "P009",
@@ -167,7 +191,10 @@
       "15% off for first-time buyers",
       "Free app subscription for 1 month"
     ],
-    "image": "https://drive.google.com/file/d/1rZwc4XJd_TkfM8g8X3wOVF8kYIiL9Gr2/view?usp=drive_link"
+    "price": 1179.99,
+    "category": "Fitness",
+    "has_offer": true,
+    "image": "/images/P009.jpg"
   },
   {
     "product_id": "P010",
@@ -182,10 +209,10 @@
       "color": "Silver",
       "power": "1500W"
     },
-    "offers": [
-      "15% off on your first purchase",
-      "Free recipe book with every order"
-    ],
-    "image": "https://drive.google.com/file/d/1KGf8zJORy1F3rGIUwr61ub5WXhD_ADsA/view?usp=drive_link"
+    "offers": [],
+    "price": 999.99,
+    "category": "Home Appliances",
+    "has_offer": false,
+    "image":"/images/P010.jpg"
   }
 ]
