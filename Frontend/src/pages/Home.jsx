@@ -136,7 +136,23 @@ const Home = () => {
           sellerName={sellerName}
           showOffersOnly={showOffersOnly}
         />
-        <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '24px' }}>Product Listings</h1>
+        <h1
+  style={{
+    textAlign: 'center',
+    color: '#333',
+    marginBottom: '24px',
+    fontSize: '2.5rem', // Larger font size
+    fontWeight: 'bold', // Bold font for emphasis
+    background: 'linear-gradient(90deg, #ff8a00, #e52e71)', // Gradient color
+    WebkitBackgroundClip: 'text', // Clip gradient to text
+    WebkitTextFillColor: 'transparent', // Make text fill transparent to show gradient
+    letterSpacing: '2px', // Space between letters
+    textShadow: '2px 4px 6px rgba(0, 0, 0, 0.2)', // Text shadow for depth
+  }}
+>
+  Product Listings
+</h1>
+
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
