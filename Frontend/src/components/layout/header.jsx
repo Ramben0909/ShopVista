@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "../../pages/context/useAuth";
 
 const Header = () => {
   const { isAuthenticated, isRegistered, login, logout } = useAuth();
   const navigate = useNavigate();
-
-  // Conditional redirect: Only redirect to home page if not already on it
-  useEffect(() => {
-    if (isAuthenticated && window.location.pathname !== "/dummyprofile") {
-      navigate('/'); // Redirect to home page
-    }
-  }, [isAuthenticated, navigate]);
+  const location = useLocation();
 
   // State to manage hover effects
   const [hoveredLink, setHoveredLink] = useState(null);
+
+  // Define active route color
+  const activeColor = '#ffeb3b'; // Brighter color for the active link
+  const defaultColor = '#EDB8C7'; // Brighter default color
 
   return (
     <header style={styles.header}>
@@ -26,7 +24,7 @@ const Header = () => {
               to="/" 
               style={{ 
                 ...styles.link, 
-                color: hoveredLink === 'home' ? 'blue' : '#EDB8C7' 
+                color: location.pathname === '/' ? activeColor : hoveredLink === 'home' ? activeColor : defaultColor 
               }} 
               onMouseEnter={() => setHoveredLink('home')}
               onMouseLeave={() => setHoveredLink(null)}
@@ -39,12 +37,12 @@ const Header = () => {
               to="/mycart" 
               style={{ 
                 ...styles.link, 
-                color: hoveredLink === 'mycart' ? 'blue' : '#EDB8C7' 
+                color: location.pathname === '/mycart' ? activeColor : hoveredLink === 'mycart' ? activeColor : defaultColor 
               }} 
               onMouseEnter={() => setHoveredLink('mycart')}
               onMouseLeave={() => setHoveredLink(null)}
             >
-              My cart
+              My Cart
             </Link>
           </li>
           <li style={styles.navItem}>
@@ -52,7 +50,7 @@ const Header = () => {
               to="/about" 
               style={{ 
                 ...styles.link, 
-                color: hoveredLink === 'about' ? 'blue' : '#EDB8C7' 
+                color: location.pathname === '/about' ? activeColor : hoveredLink === 'about' ? activeColor : defaultColor 
               }} 
               onMouseEnter={() => setHoveredLink('about')}
               onMouseLeave={() => setHoveredLink(null)}
@@ -65,7 +63,7 @@ const Header = () => {
               to="/contact" 
               style={{ 
                 ...styles.link, 
-                color: hoveredLink === 'contact' ? 'blue' : '#EDB8C7' 
+                color: location.pathname === '/contact' ? activeColor : hoveredLink === 'contact' ? activeColor : defaultColor 
               }} 
               onMouseEnter={() => setHoveredLink('contact')}
               onMouseLeave={() => setHoveredLink(null)}
@@ -76,21 +74,19 @@ const Header = () => {
 
           {/* Conditional Links for Authenticated User */}
           {isAuthenticated ? (
-            <>
-              <li style={styles.navItem}>
-                <Link 
-                  to="/dummyprofile" 
-                  style={{ 
-                    ...styles.link, 
-                    color: hoveredLink === 'dummyprofile' ? 'blue' : '#fff' 
-                  }} 
-                  onMouseEnter={() => setHoveredLink('dummyprofile')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  Dummy Profile
-                </Link>
-              </li>
-            </>
+            <li style={styles.navItem}>
+              <Link 
+                to="/dummyprofile" 
+                style={{ 
+                  ...styles.link, 
+                  color: location.pathname === '/dummyprofile' ? activeColor : hoveredLink === 'dummyprofile' ? activeColor : defaultColor 
+                }} 
+                onMouseEnter={() => setHoveredLink('dummyprofile')}
+                onMouseLeave={() => setHoveredLink(null)}
+              >
+                Dummy Profile
+              </Link>
+            </li>
           ) : (
             <>
               {/* Register/Login Link */}
@@ -101,7 +97,7 @@ const Header = () => {
                     onClick={login} 
                     style={{ 
                       ...styles.link, 
-                      color: hoveredLink === 'login' ? 'blue' : '#EDB8C7' 
+                      color: location.pathname === '/login' ? activeColor : hoveredLink === 'login' ? activeColor : defaultColor 
                     }} 
                     onMouseEnter={() => setHoveredLink('login')}
                     onMouseLeave={() => setHoveredLink(null)}
@@ -113,7 +109,12 @@ const Header = () => {
                 <li style={styles.navItem}>
                   <Link 
                     to="/register" 
-                    style={styles.link}
+                    style={{
+                      ...styles.link,
+                      color: location.pathname === '/register' ? activeColor : hoveredLink === 'register' ? activeColor : defaultColor
+                    }}
+                    onMouseEnter={() => setHoveredLink('register')}
+                    onMouseLeave={() => setHoveredLink(null)}
                   >
                     Register/Login
                   </Link>
@@ -151,17 +152,6 @@ const styles = {
     textDecoration: 'none',
     fontSize: '1.5rem', // Increased font size for better visibility
     transition: 'color 0.3s', // Transition for hover effect
-  },
-  registerButton: {
-    marginLeft: 'auto', // Push the register button to the right
-  },
-  registerLink: {
-    color: '#fff',
-    padding: '0.5rem 1rem', // Padding for the button
-    borderRadius: '4px', // Rounded corners for the button
-    textDecoration: 'none',
-    fontSize: '1.5rem', // Increased font size for the button
-    transition: 'background-color 0.3s, color 0.3s', // Transition for hover effect
   },
 };
 
