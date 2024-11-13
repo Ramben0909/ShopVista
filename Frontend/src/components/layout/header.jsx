@@ -84,7 +84,7 @@ const Header = () => {
                 onMouseEnter={() => setHoveredLink('dummyprofile')}
                 onMouseLeave={() => setHoveredLink(null)}
               >
-                Dummy Profile
+                My Profile
               </Link>
             </li>
           ) : (

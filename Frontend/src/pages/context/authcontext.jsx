@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [user, setUser] = useState(null); // Added user state to store user details
+  const [token, setToken] = useState(null);
   const [cartItems, setCartItems] = useState(() => {
     // Initialize cart from localStorage if available
     const savedCart = localStorage.getItem('cartItems');
@@ -15,15 +16,17 @@ export const AuthProvider = ({ children }) => {
   });
 
   // Function to handle user login (set user details)
-  const login = (userData) => {
+  const login = (token,userData) => {
     setIsAuthenticated(true);
     setUser(userData); // Store user details on login
+    setToken(token);
   };
 
   // Function to handle user logout
   const logout = () => {
     setIsAuthenticated(false);
     setUser(null); // Clear user details on logout
+    setToken(null);
   };
 
   // Function to handle user registration
@@ -59,6 +62,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         isRegistered,
         user, // Provide user details in context
+        token,
         login,
         logout,
         register,

@@ -103,14 +103,11 @@ const ProductDetails = () => {
             Additional Information
           </h3>
           <ul style={{ listStyleType: 'disc', paddingLeft: '20px', lineHeight: '1.5' }}>
-            {product.specifications && (
-              <>
-                <li>Battery Life: {product.specifications.battery_life}</li>
-                <li>Color: {product.specifications.color}</li>
-                <li>Bluetooth Version: {product.specifications.bluetooth_version}</li>
-                <li>Weight: {product.specifications.weight}</li>
-              </>
-            )}
+            {product.specifications && Object.keys(product.specifications).map((key) => (
+              <li key={key}>
+                {key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}: {product.specifications[key]}
+              </li>
+            ))}
           </ul>
         </div>
 
