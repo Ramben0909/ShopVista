@@ -3,7 +3,7 @@
     "product_id": "P001",
     "product_name": "Wireless Headphones",
     "seller_name": "AudioTech Store",
-    "seller_location": "New York, USA",
+    "seller_location": "New Delhi, India",
     "item_description": "High-quality wireless headphones with noise-cancellation and deep bass.",
     "rating": 2.2,
     "specifications": {
@@ -22,7 +22,7 @@
     "product_id": "P002",
     "product_name": "Smartphone 12 Pro",
     "seller_name": "TechnoWorld",
-    "seller_location": "San Francisco, USA",
+    "seller_location": "Bengaluru, India",
     "item_description": "The latest smartphone with 5G support, great camera, and long-lasting battery.",
     "rating": 4.8,
     "specifications": {
@@ -44,7 +44,7 @@
     "product_id": "P003",
     "product_name": "Gaming Laptop",
     "seller_name": "Gamer's Paradise",
-    "seller_location": "Los Angeles, USA",
+    "seller_location": "Chennai, India",
     "item_description": "High-performance gaming laptop with powerful GPU and smooth gameplay.",
     "rating": 4.7,
     "specifications": {
@@ -66,7 +66,7 @@
     "product_id": "P004",
     "product_name": "4K Ultra HD Smart TV",
     "seller_name": "Home Electronics",
-    "seller_location": "Chicago, USA",
+    "seller_location": "Kolkata, India",
     "item_description": "Experience stunning visuals and smart features with this 4K Ultra HD TV.",
     "rating": 4.6,
     "specifications": {
@@ -88,7 +88,7 @@
     "product_id": "P005",
     "product_name": "Bluetooth Speaker",
     "seller_name": "SoundWave",
-    "seller_location": "Austin, USA",
+    "seller_location": "Hyderabad, India",
     "item_description": "Portable Bluetooth speaker with deep bass and water resistance.",
     "rating": 4.3,
     "specifications": {
@@ -110,7 +110,7 @@
     "product_id": "P006",
     "product_name": "Smartwatch Series 5",
     "seller_name": "Wearable Tech",
-    "seller_location": "Boston, USA",
+    "seller_location": "Pune, India",
     "item_description": "Track your health and fitness with this stylish smartwatch.",
     "rating": 3.7,
     "specifications": {
@@ -132,7 +132,7 @@
     "product_id": "P007",
     "product_name": "Electric Toothbrush",
     "seller_name": "Health Plus",
-    "seller_location": "Miami, USA",
+    "seller_location": "Jaipur, India",
     "item_description": "Powerful electric toothbrush with multiple modes for a better cleaning experience.",
     "rating": 4.4,
     "specifications": {
@@ -154,7 +154,7 @@
     "product_id": "P008",
     "product_name": "Laptop Backpack",
     "seller_name": "Urban Gear",
-    "seller_location": "Seattle, USA",
+    "seller_location": "New Delhi, India",
     "item_description": "Durable and stylish laptop backpack with multiple compartments.",
     "rating": 4.2,
     "specifications": {
@@ -176,7 +176,7 @@
     "product_id": "P009",
     "product_name": "Fitness Tracker",
     "seller_name": "FitTech",
-    "seller_location": "Dallas, USA",
+    "seller_location": "Bengaluru, India",
     "item_description": "Track your fitness progress with this compact and accurate fitness tracker.",
     "rating": 1.6,
     "specifications": {
@@ -197,7 +197,7 @@
     "product_id": "P010",
     "product_name": "Air Fryer",
     "seller_name": "KitchenTech",
-    "seller_location": "Houston, USA",
+    "seller_location": "Mumbai, India",
     "item_description": "Cook your favorite fried foods with less oil using this efficient air fryer.",
     "rating": 4.7,
     "specifications": {
@@ -219,7 +219,7 @@
     "product_id": "P011",
     "product_name": "Wireless Keyboard and Mouse Combo",
     "seller_name": "Office Essentials",
-    "seller_location": "Newark, USA",
+    "seller_location": "Chennai, India",
     "item_description": "Ergonomic wireless keyboard and mouse combo for comfortable typing.",
     "rating": 4.5,
     "specifications": {
@@ -238,7 +238,7 @@
     "product_id": "P012",
     "product_name": "Home Security Camera",
     "seller_name": "SecureTech",
-    "seller_location": "Dallas, USA",
+    "seller_location": "Bengaluru, India",
     "item_description": "Smart home security camera with motion detection and night vision.",
     "rating": 4.7,
     "specifications": {
@@ -260,7 +260,7 @@
     "product_id": "P013",
     "product_name": "Robot Vacuum Cleaner",
     "seller_name": "CleanMaster",
-    "seller_location": "Chicago, USA",
+    "seller_location": "Kolkata, India",
     "item_description": "Automatic robot vacuum cleaner with mapping and mopping features.",
     "rating": 4.6,
     "specifications": {
@@ -282,7 +282,7 @@
     "product_id": "P014",
     "product_name": "Digital SLR Camera",
     "seller_name": "PhotoHub",
-    "seller_location": "San Francisco, USA",
+    "seller_location": "Bengaluru, India",
     "item_description": "High-resolution DSLR camera with interchangeable lenses.",
     "rating": 4.8,
     "specifications": {
@@ -304,7 +304,7 @@
     "product_id": "P015",
     "product_name": "Electric Kettle",
     "seller_name": "KitchenPro",
-    "seller_location": "Austin, USA",
+    "seller_location": "Hyderabad, India",
     "item_description": "Fast-boiling electric kettle with auto shut-off feature.",
     "rating": 2.9,
     "specifications": {
@@ -326,7 +326,7 @@
     "product_id": "P016",
     "product_name": "Portable Power Bank",
     "seller_name": "PowerHouse",
-    "seller_location": "Seattle, USA",
+    "seller_location": "New Delhi, India",
     "item_description": "Compact and high-capacity power bank for charging on the go.",
     "rating": 4.4,
     "specifications": {
@@ -348,7 +348,7 @@
     "product_id": "P017",
     "product_name": "Smart Thermostat",
     "seller_name": "Home Comfort",
-    "seller_location": "Houston, USA",
+    "seller_location": "Mumbai, India",
     "item_description": "Wi-Fi-enabled smart thermostat with energy-saving features.",
     "rating": 4.6,
     "specifications": {
@@ -367,7 +367,7 @@
     "product_id": "P018",
     "product_name": "Yoga Mat",
     "seller_name": "FitGear",
-    "seller_location": "Denver, USA",
+    "seller_location": "Kolkata, India",
     "item_description": "Non-slip, eco-friendly yoga mat for a comfortable workout.",
     "rating": 4.5,
     "specifications": {
@@ -386,7 +386,7 @@
     "product_id": "P019",
     "product_name": "Outdoor BBQ Grill",
     "seller_name": "GrillMaster",
-    "seller_location": "Phoenix, USA",
+    "seller_location": "Hyderabad, India",
     "item_description": "Stainless steel BBQ grill with adjustable heat settings.",
     "rating": 3.2,
     "specifications": {
@@ -408,7 +408,7 @@
     "product_id": "P020",
     "product_name": "USB-C Hub",
     "seller_name": "TechAccessories",
-    "seller_location": "Miami, USA",
+    "seller_location": "Jaipur, India",
     "item_description": "Multi-port USB-C hub with HDMI, USB, and SD card slots.",
     "rating": 1.5,
     "specifications": {

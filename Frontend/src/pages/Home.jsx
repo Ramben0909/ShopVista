@@ -18,6 +18,9 @@ const Home = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [categories, setCategories] = useState(['All']);
+  const [sellerLocations, setSellerLocations] = useState(['All']);
+  const [selectedLocation, setSelectedLocation] = useState('All');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,6 +37,12 @@ const Home = () => {
         setProducts(data);
         setFilteredProducts(data);
         setLoading(false);
+
+        const uniqueCategories = [...new Set(data.map(product => product.category))];
+        setCategories(uniqueCategories);
+
+        const uniqueSellerLocations = [...new Set(data.map(product => product.seller_location))];
+        setSellerLocations(uniqueSellerLocations);
       } catch (error) {
         console.error('Error fetching products:', error);
         setError(error.message);
@@ -44,7 +53,7 @@ const Home = () => {
     fetchProducts();
   }, []);
 
-  const handleSearch = (query, category, minPrice, maxPrice, minRating, sellerName, showOffersOnly) => {
+  const handleSearch = (query, category, minPrice, maxPrice, minRating, sellerName, showOffersOnly,sellerLocation) => {
     setQuery(query);
     let filtered = products;
 
@@ -89,6 +98,10 @@ const Home = () => {
       filtered = filtered.filter((product) => product.has_offer);
     }
 
+    if (sellerLocation && sellerLocation !== 'All') {
+      filtered = filtered.filter((product) => product.seller_location === sellerLocation);
+    }
+
     setFilteredProducts(filtered);
   };
 
@@ -104,6 +117,8 @@ const Home = () => {
       setSellerName(value);
     } else if (type === 'offers') {
       setShowOffersOnly(value);
+    }else if (type === 'seller_location') {
+      setSelectedLocation(value);
     }
   };
 
@@ -135,6 +150,9 @@ const Home = () => {
           minRating={minRating}
           sellerName={sellerName}
           showOffersOnly={showOffersOnly}
+          categories={categories}
+          sellerLocations={sellerLocations}
+          selectedLocation={selectedLocation}
         />
         <h1
   style={{
@@ -185,6 +203,7 @@ const Home = () => {
                       borderRadius: '4px',
                       cursor: 'pointer',
                       marginTop: '8px',
+                      marginRight:'10px',
                     }}
                   >
                     Add to Cart

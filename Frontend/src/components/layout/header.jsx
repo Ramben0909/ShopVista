@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import {  useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from "../../pages/context/useAuth";
 
 const Header = () => {
-  const { isAuthenticated, isRegistered, login, logout } = useAuth();
-  const navigate = useNavigate();
+  const { isAuthenticated, isRegistered, login } = useAuth();
   const location = useLocation();
 
   // State to manage hover effects
@@ -84,7 +83,7 @@ const Header = () => {
                 onMouseEnter={() => setHoveredLink('dummyprofile')}
                 onMouseLeave={() => setHoveredLink(null)}
               >
-                My Profile
+                Profile
               </Link>
             </li>
           ) : (
