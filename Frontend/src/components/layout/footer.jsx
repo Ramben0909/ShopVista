@@ -20,7 +20,7 @@ function Footer() {
 
         {/* Right side - Company name and copyright */}
         <div className="text-right" style={{ fontSize: '1.7rem' }}>
-          <h2 className="footer-text">InstaMart</h2>
+          <h2 className="footer-text">InstaCart</h2>
           <p className="footer-text">&copy; 2024 All rights reserved</p>
         </div>
       </div>

@@ -1,61 +1,64 @@
-/* Login.css */
-
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, rgba(255, 228, 225, 0.8), rgba(238, 238, 238, 0.8)); /* Light gradient */
-  }
-  
-  .login-container {
-    background: white; /* Set a solid background for the container */
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 6rem; /* Increased padding for larger content area (4rem * 1.5) */
-    width: 900px; /* Set a fixed width for a more horizontal layout (600px * 1.5) */
-    margin: 50px auto; /* Center the container with some margin from the top */
-    position: relative; /* Position relative for z-index */
-    z-index: 1; /* Ensure it is above the background */
-  }
-  
-  h2 {
-    color: #333;
-    font-size: 3.75rem; /* Increased font size for the heading (2.5rem * 1.5) */
-    text-align: center; /* Center the heading */
-  }
-  
-  .form-group {
-    margin-bottom: 3rem; /* Increased margin for better spacing (2rem * 1.5) */
-  }
-  
-  .form-control {
-    width: 100%; /* Full width for the input fields */
-    padding: 1.2rem; /* Increased padding for input fields (0.8rem * 1.5) */
-    font-size: 1.8rem; /* Increased font size for input fields (1.2rem * 1.5) */
-    border: 1px solid #ccc; /* Default border color */
-    border-radius: 4px; /* Rounded corners for input fields */
-    transition: border-color 0.3s ease; /* Smooth transition for border color change */
-  }
-  
-  .form-control:focus {
-    border-color: #007bff; /* Highlight border color when focused */
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional shadow effect for focus */
-  }
-  
-  .btn {
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition for button effects */
-    width: 100%; /* Full width for the button */
-    font-size: 1.8rem; /* Increased font size for the button (1.2rem * 1.5) */
-  }
-  
-  .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
-  }
-  
-  .btn:disabled {
-    background-color: #007bff; /* Keep the primary color when disabled */
-    opacity: 0.7; /* Slightly faded when disabled */
-    cursor: not-allowed; /* Change cursor to indicate disabled */
-  }
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, rgba(255, 228, 225, 0.8), rgba(238, 238, 238, 0.8)); /* Light gradient */
+}
+
+.login-container {
+  background: white; /* Set a solid background for the container */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 6rem; /* Increased padding for larger content area */
+  width: 900px; /* Set a fixed width for a more horizontal layout */
+  margin: 50px auto; /* Center the container with some margin from the top */
+  position: relative; /* Position relative for z-index */
+  z-index: 1; /* Ensure it is above the background */
+}
+
+h2 {
+  color: #333;
+  font-size: 3.75rem; /* Increased font size for the heading */
+  text-align: center; /* Center the heading */
+}
+
+.form-group {
+  margin-bottom: 3rem; /* Increased margin for better spacing */
+}
+
+.form-control {
+  width: 100%; /* Full width for the input fields */
+  padding: 1.2rem; /* Increased padding for input fields */
+  font-size: 1.8rem; /* Increased font size for input fields */
+  border: 1px solid #ccc; /* Default border color */
+  border-radius: 4px; /* Rounded corners for input fields */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border color change */
+}
+
+.form-control:focus {
+  border-color: #4c1130; /* Highlight border color when focused */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(76, 17, 48, 0.5); /* Optional shadow effect for focus */
+}
+
+.btn {
+  background-color: #007bff; /* Primary button color */
+  color: white; /* Text color for the button */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners for the button */
+  padding: 1.2rem; /* Padding for the button */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition for button effects */
+  width: 100%; /* Full width for the button */
+  font-size: 1.8rem; /* Increased font size for the button */
+}
+
+.btn:hover {
+  background-color: #4c1130; /* Change to match registration hover color */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.btn:disabled {
+  background-color: #007bff; /* Keep the primary color when disabled */
+  opacity: 0.7; /* Slightly faded when disabled */
+  cursor: not-allowed; /* Change cursor to indicate disabled */
+}

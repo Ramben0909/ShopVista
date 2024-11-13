@@ -1,0 +1,81 @@
+ 
+.register-container {
+    max-width: 800px; /* Increased maximum width */
+    width: 70vw; /* Set width to 70% of the viewport */
+    margin: 0 auto; /* Center the container */
+    padding: 40px; /* Increased padding */
+    border: 1px solid #ddd; /* Border for the container */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f9f9f9; /* Background color */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.register-title {
+    font-size: 3rem; /* Increased title font size */
+    margin-bottom: 20px; /* Margin below title */
+}
+
+.register-form-label {
+    font-size: 1.5rem; /* Increased font size for labels */
+}
+
+.register-form-control {
+    font-size: 1.3rem; /* Increased input font size */
+    padding: 15px; /* Increased padding for inputs */
+    border: 2px solid #ccc; /* Default border */
+    width: 90%; /* Set width to 90% of the container for increased size */
+    margin: 0 auto 15px auto; /* Center the input and add bottom margin */
+    display: block; /* Make sure the input is a block element for centering */
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.register-form-control:focus {
+    border-color: #4c1130; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(76, 17, 48, 0.5); /* Glow effect on focus */
+}
+
+.register-form-control:hover {
+    border-color: #4c1130; /* Change border color on hover */
+    box-shadow: 0 0 8px rgba(76, 17, 48, 0.5); /* Glow effect on hover */
+}
+
+.register-btn {
+    font-size: 1.5rem; /* Increased button font size */
+    padding: 12px; /* Increased button padding */
+    background-color: #007bff; /* Default button color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* Smooth transition for background, shadow, and text color */
+}
+
+.register-btn:hover {
+    background-color: #4c1130; /* Change button color on hover */
+    color: white; /* Change text color to white on hover */
+    box-shadow: 0 0 8px rgba(76, 17, 48, 0.5); /* Glow effect on hover */
+}
+
+.register-alert {
+    font-size: 1.2rem; /* Increased alert font size */
+}
+
+.register-footer-text {
+    font-size: 1.5rem; /* Increased footer text size */
+    color: #4c1130; /* Changed font color to green */
+}
+
+/* New styles for phone label */
+.phone-label {
+    font-size: 1.5rem; /* Match font size with other labels */
+}
+
+.btn-link {
+    color: #007bff; /* Default color for the link button */
+    text-decoration: none; /* Remove underline */
+}
+
+.btn-link:hover {
+    color: white; /* Change text color to white on hover */
+    background-color: #4c1130; /* Optional: Change background color on hover */
+}

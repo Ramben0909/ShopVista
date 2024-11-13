@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const SearchBar = ({ onSearch, onFilterChange }) => {
+const SearchBar = ({ onSearch, onFilterChange, categories = [],sellerLocations = []}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [minPrice, setMinPrice] = useState('');
@@ -9,27 +9,35 @@ const SearchBar = ({ onSearch, onFilterChange }) => {
   const [minRating, setMinRating] = useState(0);
   const [sellerName, setSellerName] = useState('');  // Added seller name state
   const [showOffersOnly, setShowOffersOnly] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState('All');
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
-    onSearch(event.target.value, selectedCategory, minPrice, maxPrice, minRating,sellerName,showOffersOnly);
+    onSearch(event.target.value, selectedCategory, minPrice, maxPrice, minRating,sellerName,showOffersOnly,selectedLocation);
   };
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
     onFilterChange('category', event.target.value);
-    onSearch(searchQuery, event.target.value, minPrice, maxPrice, minRating,sellerName,showOffersOnly);
+    onSearch(searchQuery, event.target.value, minPrice, maxPrice, minRating,sellerName,showOffersOnly,selectedLocation);
   };
+
+  const handleLocationChange = (event) => {
+    setSelectedLocation(event.target.value);
+    onFilterChange('seller_location', event.target.value);
+    onSearch(searchQuery, selectedCategory, minPrice, maxPrice, minRating, sellerName, showOffersOnly, event.target.value);
+  };
+
 
   const handleRatingChange = (event) => {
     setMinRating(Number(event.target.value));
     onFilterChange('rating', event.target.value);
-    onSearch(searchQuery, selectedCategory, minPrice, maxPrice, Number(event.target.value),sellerName,showOffersOnly);
+    onSearch(searchQuery, selectedCategory, minPrice, maxPrice, Number(event.target.value),sellerName,showOffersOnly,selectedLocation);
   };
 
   const handleSellerNameChange = (event) => {
     setSellerName(event.target.value);
-    onSearch(searchQuery, selectedCategory, minPrice, maxPrice, minRating, event.target.value, showOffersOnly);
+    onSearch(searchQuery, selectedCategory, minPrice, maxPrice, minRating, event.target.value, showOffersOnly,selectedLocation);
   };
 
   // Handle offer present change
@@ -37,7 +45,7 @@ const SearchBar = ({ onSearch, onFilterChange }) => {
     const newShowOffersOnly = !showOffersOnly;
     setShowOffersOnly(newShowOffersOnly);
     onFilterChange('offer', newShowOffersOnly);
-    onSearch(searchQuery, selectedCategory, minPrice, maxPrice, minRating, sellerName, newShowOffersOnly);
+    onSearch(searchQuery, selectedCategory, minPrice, maxPrice, minRating, sellerName, newShowOffersOnly,selectedLocation);
   };
   
 // Handle min price change
@@ -46,7 +54,7 @@ const handleMinPriceChange = (event) => {
   setMinPrice(newMinPrice);
   const effectiveMaxPrice = maxPrice === '' ? Infinity : maxPrice; // If maxPrice is empty, use Infinity
   onFilterChange('price', [newMinPrice, effectiveMaxPrice]);
-  onSearch(searchQuery, selectedCategory, newMinPrice, effectiveMaxPrice, minRating, sellerName, showOffersOnly);
+  onSearch(searchQuery, selectedCategory, newMinPrice, effectiveMaxPrice, minRating, sellerName, showOffersOnly,selectedLocation);
 };
 
 // Handle max price change
@@ -55,7 +63,7 @@ const handleMaxPriceChange = (event) => {
   setMaxPrice(newMaxPrice);
   const effectiveMinPrice = minPrice === '' ? 0 : minPrice; // If minPrice is empty, use 0
   onFilterChange('price', [effectiveMinPrice, newMaxPrice]);
-  onSearch(searchQuery, selectedCategory, effectiveMinPrice, newMaxPrice, minRating, sellerName, showOffersOnly);
+  onSearch(searchQuery, selectedCategory, effectiveMinPrice, newMaxPrice, minRating, sellerName, showOffersOnly,selectedLocation);
 };
 
 // Generate price options, adding 'All' for max price
@@ -68,17 +76,18 @@ const generatePriceOptions = () => {
 };
 
   const handleClearFilters = () => {
-    setSearchQuery('');
     setSelectedCategory('All');
+    setSelectedLocation('All');
     setMinPrice('');
     setMinRating(0);
     setMaxPrice('');
     setSellerName('');
     setShowOffersOnly(false);
-    onSearch('', 'All', 0, '', '', '', false);
+    onSearch(searchQuery, 'All', 0, '', '', '', false,'All');
     onFilterChange('category', 'All');
     onFilterChange('rating', 0);
     onFilterChange('price', ['','']);
+    onFilterChange('seller_location', 'All');
   };
 
   return (
@@ -144,12 +153,31 @@ const generatePriceOptions = () => {
           onFocus={(e) => (e.target.style.borderColor = '#4CAF50')}
           onBlur={(e) => (e.target.style.borderColor = '#dcdcdc')}
         >
-          <option value="All">All Categories</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Accessories">Accessories</option>
-          <option value="Fitness">Fitness</option>
-          <option value="Health">Health</option>
-          <option value="Home Appliances">Home Appliances</option>
+         <option value="All">All Categories</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>{category}</option>
+          ))}
+        </select>
+
+        {/* Seller Location Filter */}
+        <select
+          value={selectedLocation}
+          onChange={handleLocationChange}
+          style={{
+            padding: '10px 20px',
+            borderRadius: '25px',
+            border: '1px solid #dcdcdc',
+            fontSize: '14px',
+            width: '150px',
+            minWidth: '150px',
+            backgroundColor: '#fff',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+          }}
+        >
+          <option value="All">All Locations</option>
+          {sellerLocations.map((location) => (
+            <option key={location} value={location}>{location}</option>
+          ))}
         </select>
 
         {/* Price Filter */}
@@ -237,21 +265,21 @@ const generatePriceOptions = () => {
 
         {/* Offer Filter */}
         <button
-  className={`filter-chip ${showOffersOnly ? 'selected' : ''}`} // Correct string interpolation syntax
-  onClick={handleOfferFilterChange}
-  style={{
-    backgroundColor: showOffersOnly ? '#4CAF50' : '#f0f0f0',
-    border: '1px solid #ccc',
-    borderRadius: '50px',
-    padding: '10px 20px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
-    fontSize: '14px',
-    color: showOffersOnly ? 'white' : 'black',
-  }}
->
-  {showOffersOnly ? 'Show All Products' : 'Show Products with Offers'}
-</button>
+          className={`filter-chip ${showOffersOnly ? 'selected' : ''}`} // Correct string interpolation syntax
+          onClick={handleOfferFilterChange}
+          style={{
+            backgroundColor: showOffersOnly ? '#4CAF50' : '#f0f0f0',
+            border: '1px solid #ccc',
+            borderRadius: '50px',
+            padding: '10px 20px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+            fontSize: '14px',
+            color: showOffersOnly ? 'white' : 'black',
+          }}
+        >
+          {showOffersOnly ? 'Show All Products' : 'Show Products with Offers'}
+        </button>
 
 
 
