@@ -6,7 +6,7 @@ import Layout from '../components/layout/layout';
 import { toast } from 'react-toastify';
 
 function DummyProfile() {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user,token, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true); // Loading state to handle loading effect
 
@@ -36,6 +36,9 @@ function DummyProfile() {
     toast.error('Failed to load user data. Please try again.');
     return <div>Error loading profile data.</div>;
   }
+  console.log("This is user prfile");
+  console.log(user);
+  console.log(token);
 
   return (
     <Layout title="Profile">

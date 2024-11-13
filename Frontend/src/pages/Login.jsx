@@ -32,7 +32,7 @@ const Login = () => {
         // Pass the token and user data to context
         const { token, user } = response.data; // Assuming the response contains token and user data
         login(token, user); // Calling login function from context to store token and user data
-
+        console.log(token);
         console.log(user);  // Log user data for confirmation
         toast.success(response.data.message);
         
