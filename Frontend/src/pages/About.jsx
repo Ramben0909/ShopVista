@@ -1,78 +1,99 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import Layout from '../components/layout/layout.jsx';
 
+const ValueBox = ({ text }) => (
+  <div className="col-md-4 mb-3">
+    <div className="p-3 text-center rounded h-100 border border-2 border-dark shadow-sm fs-5" 
+         style={{ backgroundColor: '#db8aad' }}>
+      {text}
+    </div>
+  </div>
+);
+
+const SectionContainer = ({ children }) => (
+  <div className="card mb-3 border border-2 shadow-sm" style={{ borderColor: '#4c1130' }}>
+    <div className="card-body p-3">
+      {children}
+    </div>
+  </div>
+);
+
 const About = () => {
+  const values = ["Integrity", "Innovation", "Customer Satisfaction"];
+
   return (
-    <Layout title={"About Us"}>
-      <div style={styles.aboutContainer}>
-        <h1 style={styles.aboutTitle}>About Us</h1>
-        
-        <p style={styles.aboutDescription}>
-          Welcome to our website! We are committed to providing the best service to our customers.
-        </p>
-        
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Our Mission</h2>
-          <p style={styles.sectionText}>
-            Our mission is to deliver quality products that exceed expectations and make a positive impact.
+    <Layout title="About Us">
+      <div className="container-fluid py-3 min-vh-100">
+        {/* Header Section */}
+        <header className="text-center mb-3">
+          <h1 className="display-4 mb-2 fw-bold">About Us</h1>
+          <p className="lead">
+            Welcome to our website! We are committed to providing the best service to our customers.
           </p>
-        </section>
-        
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Our Values</h2>
-          <ul style={styles.valuesList}>
-            <li style={styles.listItem}>Integrity</li>
-            <li style={styles.listItem}>Innovation</li>
-            <li style={styles.listItem}>Customer Satisfaction</li>
-          </ul>
-        </section>
+        </header>
+
+        {/* Main Content Section */}
+        <div className="row mx-2">
+          <div className="col-12">
+            {/* Mission Section */}
+            <SectionContainer>
+              <h2 className="h3 mb-2 fw-bold" style={{ color: '#4c1130' }}>
+                Our Mission
+              </h2>
+              <p className="fs-6">
+                Our mission is to deliver quality products that exceed expectations and make a positive impact.
+              </p>
+            </SectionContainer>
+
+            {/* Values Section */}
+            <SectionContainer>
+              <h2 className="h3 mb-3 fw-bold" style={{ color: '#4c1130' }}>
+                Our Values
+              </h2>
+              <div className="row g-2">
+                {values.map((value, index) => (
+                  <ValueBox key={index} text={value} />
+                ))}
+              </div>
+            </SectionContainer>
+
+            {/* Project Section */}
+            <SectionContainer>
+              <h2 className="h3 mb-2 fw-bold" style={{ color: '#4c1130' }}>
+                Industrial Management Project
+              </h2>
+              <p className="fs-6">
+                The Industrial Management Project was a transformative experience for all of us. 
+                It allowed us to apply practical management strategies, improve team collaboration, 
+                and develop solutions that enhanced operational efficiency. Through this project, 
+                we gained valuable insights into the challenges and rewards of industrial management, 
+                fostering skills that will benefit us in future endeavors.
+              </p>
+            </SectionContainer>
+          </div>
+        </div>
+
+        {/* Image Section - Full size at bottom */}
+        <div className="row mt-4">
+          <div className="col-12">
+            <div className="text-center px-4">
+              <img 
+                src="http://localhost:5000/images/21.png"
+                alt="Description of the image"
+                className="img-fluid rounded shadow-sm"
+                style={{ 
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '600px', // Increased max height
+                  objectFit: 'contain' // Shows full image without cropping
+                }}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </Layout>
   );
-};
-
-const styles = {
-  aboutContainer: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '20px',
-    backgroundColor: '#f4f4f4',
-    borderRadius: '8px',
-    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-  },
-  aboutTitle: {
-    fontSize: '2rem',
-    color: '#333',
-    textAlign: 'center',
-    marginBottom: '20px',
-  },
-  aboutDescription: {
-    fontSize: '1.1rem',
-    color: '#666',
-    textAlign: 'center',
-    marginBottom: '30px',
-  },
-  section: {
-    marginBottom: '30px',
-  },
-  sectionTitle: {
-    fontSize: '1.5rem',
-    color: '#333',
-    marginBottom: '10px',
-  },
-  sectionText: {
-    fontSize: '1.1rem',
-    color: '#666',
-  },
-  valuesList: {
-    listStyleType: 'disc',
-    paddingLeft: '20px',
-    fontSize: '1.1rem',
-    color: '#666',
-  },
-  listItem: {
-    marginBottom: '8px',
-  },
 };
 
 export default About;

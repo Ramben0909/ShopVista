@@ -57,12 +57,10 @@ const Register = () => {
         setTimeout(() => {
           navigate('/login');
         }, 2000);
-
       } else {
         setError(response.data.message || 'Registration failed.');
         toast.error(response.data.message || 'Registration failed.');
       }
-
     } catch (err) {
       setLoading(false);
       setError(err.response?.data?.message || 'Something went wrong');
@@ -74,7 +72,7 @@ const Register = () => {
     <Layout title="Register">
       <div className="container mt-5 d-flex justify-content-center">
         <div className="card p-4 shadow-lg rounded" style={{
-          maxWidth: '500px', 
+          maxWidth: '900px', // Increased maxWidth
           width: '100%', 
           border: 'none', 
           background: 'linear-gradient(135deg, #f9f9f9, #e6e6e6)',
@@ -82,7 +80,7 @@ const Register = () => {
         }}>
           <h2 className="text-center mb-4" style={{
             color: '#333', 
-            fontSize: '1.8rem', 
+            fontSize: '2.7rem', // Increased font size (1.5x)
             fontWeight: '600', 
             letterSpacing: '1px'
           }}>Register</h2>
@@ -90,11 +88,11 @@ const Register = () => {
           {success && <div className="alert alert-success">{success}</div>}
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="name" className="form-label">Name</label>
+              <label htmlFor="name" className="form-label" style={{ fontSize: '1.5rem' }}>Name</label>
               <input
                 type="text"
                 className="form-control p-2 text-secondary"
-                style={{ fontStyle: 'italic', fontSize: '0.95rem' }}
+                style={{ fontStyle: 'italic', fontSize: '1.425rem' }}
                 id="name"
                 name="name"
                 value={formData.name}
@@ -105,11 +103,11 @@ const Register = () => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email address</label>
+              <label htmlFor="email" className="form-label" style={{ fontSize: '1.5rem' }}>Email address</label>
               <input
                 type="email"
                 className="form-control p-2 text-secondary"
-                style={{ fontStyle: 'italic', fontSize: '0.95rem' }}
+                style={{ fontStyle: 'italic', fontSize: '1.425rem' }}
                 id="email"
                 name="email"
                 value={formData.email}
@@ -120,11 +118,11 @@ const Register = () => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="phone" className="form-label">Phone</label>
+              <label htmlFor="phone" className="form-label" style={{ fontSize: '1.5rem' }}>Phone</label>
               <input
                 type="text"
                 className="form-control p-2 text-secondary"
-                style={{ fontStyle: 'italic', fontSize: '0.95rem' }}
+                style={{ fontStyle: 'italic', fontSize: '1.425rem' }}
                 id="phone"
                 name="phone"
                 value={formData.phone}
@@ -135,11 +133,11 @@ const Register = () => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="address" className="form-label">Address</label>
+              <label htmlFor="address" className="form-label" style={{ fontSize: '1.5rem' }}>Address</label>
               <input
                 type="text"
                 className="form-control p-2 text-secondary"
-                style={{ fontStyle: 'italic', fontSize: '0.95rem' }}
+                style={{ fontStyle: 'italic', fontSize: '1.425rem' }}
                 id="address"
                 name="address"
                 value={formData.address}
@@ -150,11 +148,11 @@ const Register = () => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">Password</label>
+              <label htmlFor="password" className="form-label" style={{ fontSize: '1.5rem' }}>Password</label>
               <input
                 type="password"
                 className="form-control p-2 text-secondary"
-                style={{ fontStyle: 'italic', fontSize: '0.95rem' }}
+                style={{ fontStyle: 'italic', fontSize: '1.425rem' }}
                 id="password"
                 name="password"
                 value={formData.password}
@@ -168,20 +166,20 @@ const Register = () => {
               type="submit"
               className="btn btn-primary w-100 mt-3"
               style={{
-                backgroundColor: '#007bff', 
+                backgroundColor: '#4c1130', 
                 border: 'none', 
-                fontWeight: '600',  // Bolder text
-                fontSize: '1rem',  // Slightly larger text
+                fontWeight: '600', 
+                fontSize: '1.5rem',
                 transition: 'background-color 0.3s, transform 0.3s',
-                padding: '0.6rem'  // Thinner button
+                padding: '0.9rem'
               }}
               disabled={loading}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#0056b3';
+                e.target.style.backgroundColor = '#3b0e24'; // Darker shade for hover
                 e.target.style.transform = 'scale(1.02)';
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = '#007bff';
+                e.target.style.backgroundColor = '#4c1130';
                 e.target.style.transform = 'scale(1)';
               }}
             >
@@ -190,16 +188,28 @@ const Register = () => {
           </form>
 
           <div className="mt-4 text-center">
-            <p style={{ fontSize: '1rem' }}>Already have an account? 
-              <button className="btn btn-primary w-100 mt-3" style={{
-                 backgroundColor: '#007bff', 
-                 border: 'none', 
-                 fontWeight: '600',  // Bolder text
-                 fontSize: '1rem',  // Slightly larger text
-                 transition: 'background-color 0.3s, transform 0.3s',
-                 padding: '0.6rem',
-                textDecoration: 'underline'
-              }} onClick={() => navigate('/login')}>Login</button>
+            <p style={{ fontSize: '1.5rem' }}>Already have an account? 
+              <button className="btn w-100 mt-3" style={{
+                 backgroundColor: 'transparent', 
+                 border: '2px solid #4c1130', 
+                 color: '#4c1130', 
+                 fontWeight: '600', 
+                 fontSize: '1.5rem',
+                 transition: 'background-color 0.3s, color 0.3s, transform 0.3s',
+                 padding: '0.9rem',
+                 textDecoration: 'underline'
+              }} 
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#4c1130';
+                e.target.style.color = 'white';
+                e.target.style.transform = 'scale(1.02)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.color = '#4c1130';
+                e.target.style.transform = 'scale(1)';
+              }}
+              onClick={() => navigate('/login')}>Login</button>
             </p>
           </div>
         </div>
