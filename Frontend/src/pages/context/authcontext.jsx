@@ -20,15 +20,24 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(true);
     setUser(userData); // Store user details on login
     setToken(token);
+
+
+    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('token', token);
   };
 
   // Function to handle user logout
   const logout = () => {
     setIsAuthenticated(false);
-    setUser(null); // Clear user details on logout
+    setUser(null);  // Clear user details on logout
     setToken(null);
+  
+    // Clear cart items and token/user from localStorage
+    setCartItems([]);  // Reset the cart state
+    localStorage.removeItem('cartItems');  // Remove cart data from localStorage
+    localStorage.removeItem('user');  // Remove user details from localStorage
+    localStorage.removeItem('token');  // Remove token from localStorage
   };
-
   // Function to handle user registration
   const register = () => {
     setIsRegistered(true);
@@ -50,9 +59,12 @@ export const AuthProvider = ({ children }) => {
 
   // Reload cart items from localStorage when component mounts
   useEffect(() => {
-    const savedCart = localStorage.getItem('cartItems');
-    if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
+    const savedUser = localStorage.getItem('user');
+    const savedToken = localStorage.getItem('token');
+    if (savedUser && savedToken) {
+      setIsAuthenticated(true);
+      setUser(JSON.parse(savedUser));  // Rehydrate user data from localStorage
+      setToken(savedToken);  // Rehydrate token from localStorage
     }
   }, []);
 
